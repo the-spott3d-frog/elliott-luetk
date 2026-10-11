@@ -114,6 +114,7 @@
             margin-bottom: 2rem;
         }
 
+         /* Profile Picture Circular Crop Fix */
         .profile-pic-placeholder {
             width: 180px;
             height: 180px;
@@ -121,18 +122,28 @@
             background: linear-gradient(135deg, var(--moss) 0%, var(--forest-green) 100%);
             border: 3px solid var(--accent-gold);
             border-radius: 50%;
-            /* Hide any direct content */
+            /* CRITICAL: Clips the image to the circle */
             overflow: hidden;
-            /* Make background act as the image container */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            /* Position for the image inside */
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: all 0.3s ease;
         }
 
+        /* Make the image itself round and fit properly */
+        .profile-pic-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+        }
+
+        /* Hover effect still works */
         .profile-pic-placeholder:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(201, 169, 98, 0.3);
+            box-shadow: 0 0 30px rgba(179, 141, 44, 0.3);
         }
 
         .bio-text {
