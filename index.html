@@ -261,23 +261,150 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 900px) {
-            .layout-container {
-                flex-direction: column;
-            }
+        /* Enhanced Mobile Responsiveness - Only affects screens below 900px */
+@media (max-width: 900px) {
+    /* Stack layout vertically */
+    .layout-container {
+        flex-direction: column;
+    }
 
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                top: 0;
-            }
+    /* Fix sidebar positioning on mobile */
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        top: 0;
+        max-height: none;
+        padding: 1.5rem;
+    }
 
-            .nav-tabs {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
+    /* Smaller profile picture on mobile */
+    .profile-pic-placeholder {
+        width: 140px !important;
+        height: 140px !important;
+        margin: 0 auto 1rem;
+    }
+
+    /* Compact navigation for smaller screens */
+    @media (max-width: 600px) {
+        .top-nav {
+            flex-direction: column;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
         }
+
+        .logo-btn {
+            font-size: 1.2rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .nav-tabs {
+            width: 100%;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .nav-tab {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+        }
+
+        /* Better touch targets for mobile */
+        .nav-tab, .social-link, .logo-btn {
+            min-height: 44px;
+        }
+
+        /* Main content padding adjustment */
+        .main-content {
+            padding: 1rem;
+        }
+
+        /* Smaller profile content */
+        .sidebar {
+            padding: 1.25rem;
+        }
+
+        .bio-text {
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        /* Image grid gets more space on narrow screens */
+        .image-grid {
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1rem;
+        }
+
+        .image-card img {
+            height: 180px;
+        }
+
+        /* Content block spacing */
+        .content-block {
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-block h2 {
+            font-size: 1.5rem;
+        }
+    }
+    
+    /* Medium screens (tablets) */
+    @media (min-width: 601px) and (max-width: 900px) {
+        .nav-tabs {
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .image-grid {
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        }
+
+        .main-content {
+            padding: 1.5rem;
+        }
+
+        .sidebar {
+            padding: 1.5rem;
+        }
+
+        .profile-pic-placeholder {
+            width: 150px;
+            height: 150px;
+        }
+    }
+}
+
+/* Prevent horizontal scroll on very small screens */
+    @media (max-width: 480px) {
+        body {
+            overflow-x: hidden;
+        }
+
+        .image-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .image-card img {
+            height: 200px;
+        }
+
+        .content-block {
+            padding: 1rem;
+        }
+
+        .sidebar {
+            padding: 1rem;
+        }
+
+        .nav-tab {
+            font-size: 0.8rem;
+            padding: 0.4rem 0.75rem;
+        }
+    }
     </style>
 </head>
 <body>
