@@ -415,6 +415,28 @@
         .nav-tabs {
             display: none;
         }
+
+        /* On mobile, hide profile in sidebar */
+        .sidebar .profile-section {
+            display: none;
+        }
+
+        /* Show profile content in main page section only */
+        #main-page .mobile-profile-display {
+            display: block;
+            margin-bottom: 2rem;
+        }
+
+        /* Desktop stays unchanged - profile always visible in sidebar */
+        @media (min-width: 901px) {
+            .sidebar .profile-section {
+                display: block;
+            }
+    
+            #main-page .mobile-profile-display {
+                display: none;
+            }
+        }
     }
     /* Compact navigation for smaller screens */
     @media (max-width: 600px) {
@@ -561,10 +583,17 @@
                 <div class="profile-pic-placeholder" id="profile-pic">
                     <img src="pfp.jpg" alt="Profile">
                 </div>
-                <p class="bio-text" id="bio-content">
-                    Replace this with your artist bio. Share your journey, inspiration, 
-                    and creative philosophy in a few heartfelt paragraphs.
-                </p>
+                <!-- In the sidebar - desktop only -->
+                    <p class="bio-text" id="bio-content-desktop">
+                        Replace this with your artist bio. Share your journey, inspiration, 
+                        and creative philosophy in a few heartfelt paragraphs.
+                    </p>
+
+                    <!-- In the main page section - mobile only -->
+                    <p class="bio-text" id="bio-content-mobile">
+                        Replace this with your artist bio. Share your journey, inspiration, 
+                        and creative philosophy in a few heartfelt paragraphs.
+                    </p>
             </div>
             
             <div class="social-links" id="social-media">
@@ -591,6 +620,27 @@
                     <p>Your content here...</p>
                 </div>
                 -->
+            </section>
+
+            <section id="main-page" class="page-section active">
+                
+                <!-- Mobile-only profile display (hidden on desktop) -->
+                <div class="mobile-profile-display">
+                    <div class="content-block">
+                        <div class="profile-pic-placeholder" style="margin-bottom: 1rem;">
+                            <img src="pfp.jpg" alt="Profile">
+                        </div>
+                        <p class="bio-text" id="bio-content-mobile">
+                            Replace this with your artist bio. Share your journey, inspiration, 
+                            and creative philosophy in a few heartfelt paragraphs.
+                        </p>
+                    </div>
+                </div>
+    
+                <div class="content-block">
+                    <h2>Welcome to My Portfolio</h2>
+                    <p>Your introduction and featured work goes here.</p>
+                </div>
             </section>
 
             <!-- Photos Section -->
@@ -646,22 +696,27 @@
 
     <!-- Simple Tab Switching Script -->
     <script>
-        // Handle tab navigation
+        // Handle tab navigation (includes drawer links)
         document.querySelectorAll('.nav-tab, .drawer-link, #home-logo').forEach(tab => {
             tab.addEventListener('click', function(e) {
                 e.preventDefault();
-                
+        
                 // Remove active class from all sections
                 document.querySelectorAll('.page-section').forEach(section => {
                     section.classList.remove('active');
                 });
-                
+        
                 // Add active class to target section
                 const targetId = this.getAttribute('href').substring(1);
                 document.getElementById(targetId).classList.add('active');
-                
+        
                 // Update URL without reloading
                 window.history.pushState(null, '', this.getAttribute('href'));
+        
+                // CLOSE DRAWER after navigation (Fix for mobile)
+                if (window.innerWidth <= 900) {
+                    closeDrawer();
+                }
             });
         });
 
