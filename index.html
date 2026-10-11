@@ -531,7 +531,27 @@
             <li><a href="#art" class="nav-tab">Art</a></li>
             <li><a href="#info" class="nav-tab">Info</a></li>
         </ul>
+        <ul class="nav-tabs">
+            ...
+        </ul>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
     </nav>
+
+    <!-- Mobile Drawer -->
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+    <aside class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-header">
+            <img src="pfp.jpg" class="drawer-pfp" alt="Profile">
+            <span class="drawer-name">Elliott Arts</span>
+            <button class="drawer-close" id="drawerClose" aria-label="Close menu">✕</button>
+        </div>
+        <nav class="drawer-nav">
+            <a href="#main-page" class="drawer-link">Main Page</a>
+            <a href="#photos" class="drawer-link">Photos</a>
+            <a href="#art" class="drawer-link">Art</a>
+            <a href="#info" class="drawer-link">Info</a>
+        </nav>
+    </aside>
 
     <!-- Main Layout Container -->
     <div class="layout-container">
