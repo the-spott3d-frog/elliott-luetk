@@ -647,7 +647,7 @@
     <!-- Simple Tab Switching Script -->
     <script>
         // Handle tab navigation
-        document.querySelectorAll('.nav-tab, #home-logo').forEach(tab => {
+        document.querySelectorAll('.nav-tab, .drawer-link, #home-logo').forEach(tab => {
             tab.addEventListener('click', function(e) {
                 e.preventDefault();
                 
@@ -678,6 +678,31 @@
                 section.classList.remove('active');
             });
             document.getElementById(hash).classList.add('active');
+        });
+
+        // Mobile drawer controls
+        const drawer = document.getElementById('mobileDrawer');
+        const backdrop = document.getElementById('drawerBackdrop');
+
+        function openDrawer() {
+            drawer.classList.add('open');
+            backdrop.classList.add('visible');
+            document.body.style.overflow = 'hidden'; // prevent scrolling behind drawer
+        }
+
+        function closeDrawer() {
+            drawer.classList.remove('open');
+            backdrop.classList.remove('visible');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('menuToggle').addEventListener('click', openDrawer);
+        document.getElementById('drawerClose').addEventListener('click', closeDrawer);
+        backdrop.addEventListener('click', closeDrawer);
+
+        // Close drawer when pressing Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeDrawer();
         });
     </script>
 </body>
