@@ -121,12 +121,12 @@
             background: linear-gradient(135deg, var(--moss) 0%, var(--forest-green) 100%);
             border: 3px solid var(--accent-gold);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Cinzel', serif;
-            color: var(--mist-white);
-            opacity: 0.8;
+            /* Hide any direct content */
+            overflow: hidden;
+            /* Make background act as the image container */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             transition: all 0.3s ease;
         }
 
@@ -262,28 +262,28 @@
 
         /* Responsive Design */
         /* Enhanced Mobile Responsiveness - Only affects screens below 900px */
-@media (max-width: 900px) {
-    /* Stack layout vertically */
-    .layout-container {
-        flex-direction: column;
-    }
+    @media (max-width: 900px) {
+        /* Stack layout vertically */
+        .layout-container {
+            flex-direction: column;
+        }
 
-    /* Fix sidebar positioning on mobile */
-    .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-        top: 0;
-        max-height: none;
-        padding: 1.5rem;
-    }
+        /* Fix sidebar positioning on mobile */
+        .sidebar {
+            width: 100%;
+            height: auto;
+            position: relative;
+            top: 0;
+            max-height: none;
+            padding: 1.5rem;
+        }
 
-    /* Smaller profile picture on mobile */
-    .profile-pic-placeholder {
-        width: 140px !important;
-        height: 140px !important;
-        margin: 0 auto 1rem;
-    }
+        /* Smaller profile picture on mobile */
+        .profile-pic-placeholder {
+            width: 140px !important;
+            height: 140px !important;
+            margin: 0 auto 1rem;
+        }
 
     /* Compact navigation for smaller screens */
     @media (max-width: 600px) {
