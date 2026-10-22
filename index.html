@@ -8,17 +8,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
     /* ============================================================
-       ELLIOTT ARTS — REFINED SOCIAL ICONS
-       Clean geometric brand marks (monochrome, CSS-ready paths)
+       ELLIOTT ARTS — WARM MID-KEY SURFACES
+       Three hues only: pine green, slate blue, brass.
+       Backgrounds are warm greige — no white anywhere.
        ============================================================ */
 
     :root {
         /* --- Warm neutrals (the backbone) --- */
-        --paper: #f3f1ec;
-        --paper-deep: #eae7e0;
-        --surface: #fdfcf9;
-        --line: #d9d5cb;
-        --line-soft: #e7e4dc;
+        --paper: #e2dfd6;
+        --paper-deep: #d8d4ca;
+        --surface: #ece9e1;
+        --line: #c8c3b6;
+        --line-soft: #d7d2c6;
 
         /* --- Deep surfaces (nav, sidebar, drawer) --- */
         --deep: #1f2e2a;
@@ -27,7 +28,7 @@
 
         /* --- Text --- */
         --text: #2b322f;
-        --text-muted: #6c746f;
+        --text-muted: #626963;
         --on-deep: #e7e4dc;
         --on-deep-muted: #aeb8b1;
 
@@ -63,11 +64,11 @@
         font-size: 13px;
         line-height: 1.7;
         background-color: var(--paper);
-        /* Barely-there woven texture — reads as paper, not as a gradient */
+        /* Faint woven texture — reads as linen, not as a gradient */
         background-image: repeating-linear-gradient(
             45deg,
-            rgba(70, 101, 91, 0.012) 0px,
-            rgba(70, 101, 91, 0.012) 1px,
+            rgba(70, 101, 91, 0.022) 0px,
+            rgba(70, 101, 91, 0.022) 1px,
             transparent 1px,
             transparent 6px
         );
@@ -224,9 +225,7 @@
     }
 
     .social-link {
-        display: flex;
-        align-items: center;
-        gap: 12px;
+        display: block;
         color: var(--on-deep);
         text-decoration: none;
         padding: 10px 16px;
@@ -239,22 +238,10 @@
         transition: all 0.2s ease;
     }
 
-    .social-link svg {
-        width: 18px;
-        height: 18px;
-        flex-shrink: 0;
-        fill: currentColor;
-        opacity: 0.9;
-    }
-
     .social-link:hover {
         color: var(--brass-soft);
         background: rgba(176, 143, 78, 0.08);
         border-color: rgba(216, 195, 145, 0.55);
-    }
-
-    .social-link svg:hover {
-        opacity: 1;
     }
 
     /* ===== Main Content Area ===== */
@@ -285,7 +272,7 @@
         border: 1px solid var(--line);
         border-radius: 4px;
         margin-bottom: 22px;
-        box-shadow: 0 1px 2px rgba(31, 46, 42, 0.04);
+        box-shadow: 0 1px 2px rgba(31, 46, 42, 0.05);
     }
 
     .content-block h2 {
@@ -322,7 +309,7 @@
 
     .image-card:hover {
         border-color: var(--slate);
-        box-shadow: 0 4px 12px rgba(59, 85, 106, 0.13);
+        box-shadow: 0 4px 12px rgba(59, 85, 106, 0.15);
         transform: translateY(-2px);
     }
 
@@ -673,21 +660,9 @@
         </div>
 
         <div class="social-links" id="social-media">
-            <a href="https://www.instagram.com/elliott_luetk?exln=MTk1dnlvYzlidHRjZg%3D%3D" class="social-link">
-                <!-- Instagram - Official Camera Logo -->
-                <svg viewBox="0 0 24 24" role="presentation" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="6" r="1.5"/></svg>
-                Instagram
-            </a>
-            <a href="https://bsky.app/profile/elliott-luetk.bsky.social" class="social-link">
-                <!-- Bluesky - Butterfly (symmetrical wing design) -->
-                <svg viewBox="0 0 24 24" role="presentation" aria-hidden="true"><path d="M12 11c-1.5-2.8-4.2-5-7-5-1.2 0-2.2.8-2.2 2 0 2.5 2.8 4.2 5 5.5l-.5 2.5c-2.3 1-5.3 2-5.3 4 0 1.2 1 2 2.2 2 2.8 0 5.2-2.5 6.5-5 1.3 2.5 3.7 5 6.5 5 1.2 0 2.2-.8 2.2-2 0-2-3-3-5.3-4l-.5-2.5c2.2-1.3 5-3 5-5.5 0-1.2-1-2-2.2-2-2.8 0-5.5 2.2-7 5z"/></svg>
-                Bluesky
-            </a>
-            <a href="https://www.tumblr.com/elliott-luetk" class="social-link">
-                <!-- Tumblr - Stylized T -->
-                <svg viewBox="0 0 24 24" role="presentation" aria-hidden="true"><path d="M5.5 5h13v3H18v10c0 2.8-2.2 5-5 5s-5-2.2-5-5V8H5.5V5z"/></svg>
-                Tumblr
-            </a>
+            <a href="https://www.instagram.com/elliott_luetk?exln=MTk1dnlvYzlidHRjZg%3D%3D" class="social-link">Instagram</a>
+            <a href="https://bsky.app/profile/elliott-luetk.bsky.social" class="social-link">Bluesky</a>
+            <a href="https://www.tumblr.com/elliott-luetk" class="social-link">Tumblr</a>
         </div>
     </aside>
 
