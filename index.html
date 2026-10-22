@@ -8,9 +8,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
     /* ============================================================
-       ELLIOTT ARTS — HARMONISED PALETTE
-       Three hue families only: pine green, slate blue, brass.
-       Everything else is a warm neutral. Mid-key throughout.
+       ELLIOTT ARTS — REFINED SOCIALS + BALANCED CHROME
+       Three hues only: pine green, slate blue, brass.
+       Social buttons now have icons + subtle pill outlines.
        ============================================================ */
 
     :root {
@@ -22,9 +22,9 @@
         --line-soft: #e7e4dc;
 
         /* --- Deep surfaces (nav, sidebar, drawer) --- */
-        --deep: #22332f;
-        --deep-2: #2a3e39;
-        --deep-3: #344b45;
+        --deep: #1f2e2a;
+        --deep-2: #263834;
+        --deep-3: #2f443e;
 
         /* --- Text --- */
         --text: #2b322f;
@@ -48,7 +48,7 @@
         --sand: #cbb99c;
 
         /* --- Shared values --- */
-        --radius: 4px;
+        --radius: 20px;
         --nav-h: 64px;
         --pad-x: 32px;
     }
@@ -67,8 +67,8 @@
         /* Barely-there woven texture — reads as paper, not as a gradient */
         background-image: repeating-linear-gradient(
             45deg,
-            rgba(70, 101, 91, 0.016) 0px,
-            rgba(70, 101, 91, 0.016) 1px,
+            rgba(70, 101, 91, 0.012) 0px,
+            rgba(70, 101, 91, 0.012) 1px,
             transparent 1px,
             transparent 6px
         );
@@ -100,8 +100,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 1px solid rgba(176, 143, 78, 0.4);
-        box-shadow: 0 1px 3px rgba(34, 51, 47, 0.14);
+        border-bottom: 1px solid rgba(176, 143, 78, 0.35);
+        box-shadow: 0 1px 3px rgba(31, 46, 42, 0.14);
     }
 
     .logo-btn {
@@ -164,13 +164,13 @@
     .sidebar {
         width: 304px;
         flex-shrink: 0;
-        background: linear-gradient(180deg, var(--deep) 0%, var(--deep-2) 100%);
+        background: var(--deep);
         padding: 28px 24px;
         height: calc(100vh - var(--nav-h));
         position: sticky;
         top: var(--nav-h);
         overflow-y: auto;
-        border-right: 1px solid rgba(0, 0, 0, 0.18);
+        border-right: 1px solid rgba(0, 0, 0, 0.15);
     }
 
     .profile-section {
@@ -183,7 +183,7 @@
         width: 164px;
         height: 164px;
         margin: 0 auto 18px;
-        background: var(--deep-3);
+        background: var(--deep-2);
         border: 1px solid rgba(216, 195, 145, 0.45);
         border-radius: 50%;
         overflow: hidden;
@@ -219,29 +219,43 @@
     .social-links {
         display: flex;
         flex-direction: column;
-        gap: 4px;
+        gap: 6px;
         padding-top: 18px;
         border-top: 1px solid rgba(231, 228, 220, 0.12);
     }
 
     .social-link {
-        display: block;
+        display: flex;
+        align-items: center;
+        gap: 12px;
         color: var(--on-deep);
         text-decoration: none;
-        padding: 9px 12px;
-        border-left: 2px solid transparent;
-        border-radius: 0 3px 3px 0;
-        background: transparent;
+        padding: 10px 16px;
+        border: 1px solid rgba(231, 228, 220, 0.25);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.02);
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         font-size: 11px;
-        letter-spacing: 0.6px;
-        transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+        letter-spacing: 0.5px;
+        transition: all 0.2s ease;
+    }
+
+    .social-link svg {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+        fill: currentColor;
+        opacity: 0.85;
     }
 
     .social-link:hover {
         color: var(--brass-soft);
-        background: rgba(93, 121, 145, 0.22);
-        border-left-color: var(--brass);
+        background: rgba(176, 143, 78, 0.08);
+        border-color: rgba(216, 195, 145, 0.55);
+    }
+
+    .social-link svg:hover {
+        opacity: 1;
     }
 
     /* ===== Main Content Area ===== */
@@ -270,9 +284,9 @@
         background: var(--surface);
         padding: 24px 26px;
         border: 1px solid var(--line);
-        border-radius: var(--radius);
+        border-radius: 4px;
         margin-bottom: 22px;
-        box-shadow: 0 1px 2px rgba(34, 51, 47, 0.04);
+        box-shadow: 0 1px 2px rgba(31, 46, 42, 0.04);
     }
 
     .content-block h2 {
@@ -302,7 +316,7 @@
     .image-card {
         background: var(--surface);
         border: 1px solid var(--line);
-        border-radius: var(--radius);
+        border-radius: 4px;
         overflow: hidden;
         transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
     }
@@ -660,9 +674,18 @@
         </div>
 
         <div class="social-links" id="social-media">
-            <a href="https://www.instagram.com/elliott_luetk?exln=MTk1dnlvYzlidHRjZg%3D%3D" class="social-link">Instagram</a>
-            <a href="https://bsky.app/profile/elliott-luetk.bsky.social" class="social-link">Bluesky</a>
-            <a href="https://www.tumblr.com/elliott-luetk" class="social-link">Tumblr</a>
+            <a href="https://www.instagram.com/elliott_luetk?exln=MTk1dnlvYzlidHRjZg%3D%3D" class="social-link">
+                <svg viewBox="0 0 24 24" role="presentation" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.3 2.3.5.5.2.8.4 1.1.8.4.3.6.6.8 1.1.2.4.4 1.1.5 2.3.1 1.3.1 1.7.1 4.9 0 3.2 0 3.6-.1 4.9-.1 1.2-.3 1.9-.5 2.3-.2.5-.4.8-.8 1.1-.3.4-.6.6-1.1.8-.4.2-1.1.4-2.3.5-1.3.1-1.7.1-4.9.1-3.2 0-3.6 0-4.9-.1-1.2-.1-1.9-.3-2.3-.5-.5-.2-.8-.4-1.1-.8-.4-.3-.6-.6-.8-1.1-.2-.4-.4-1.1-.5-2.3-.1-1.3-.1-1.7-.1-4.9 0-3.2 0-3.6.1-4.9.1-1.2.3-1.9.5-2.3.2-.5.4-.8.8-1.1.3-.4.6-.6 1.1-.8.4-.2 1.1-.4 2.3-.5 1.3-.1 1.7-.1 4.9-.1zm0-1.8c-3.3 0-3.7 0-5 .1-1.3.1-2.2.3-3 .6-.8.3-1.5.8-2 1.4-.6.5-1.1 1.2-1.4 2-.3.8-.5 1.7-.6 3-.1 1.3-.1 1.7-.1 5s0 3.7.1 5c.1 1.3.3 2.2.6 3 .3.8.8 1.5 1.4 2 .5.6 1.2 1.1 2 1.4.8.3 1.7.5 3 .6 1.3.1 1.7.1 5 .1s3.7 0 5-.1c1.3-.1 2.2-.3 3-.6.8-.3 1.5-.8 2-1.4.6-.5 1.1-1.2 1.4-2 .3-.8.5-1.7.6-3 .1-1.3.1-1.7.1-5s0-3.7-.1-5c-.1-1.3-.3-2.2-.6-3-.3-.8-.8-1.5-1.4-2-.5-.6-1.2-1.1-2-1.4-.8-.3-1.7-.5-3-.6-1.3-.1-1.7-.1-5-.1zM12 5.8c-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2 6.2-2.8 6.2-6.2-2.8-6.2-6.2-6.2zm0 10.6c-2.4 0-4.4-2-4.4-4.4s2-4.4 4.4-4.4 4.4 2 4.4 4.4-2 4.4-4.4 4.4zm6.4-10.6c0 .7-.5 1.2-1.2 1.2-.7 0-1.2-.5-1.2-1.2s.5-1.2 1.2-1.2c.7 0 1.2.5 1.2 1.2z"/></svg>
+                Instagram
+            </a>
+            <a href="https://bsky.app/profile/elliott-luetk.bsky.social" class="social-link">
+                <svg viewBox="0 0 24 24" role="presentation" aria-hidden="true"><path d="M12.8 12.8c2.6 3.2 4.4 7.5 2.8 8.8-1.6 1.3-4.3-1.9-5.6-3.9-1.3 2-4 5.2-5.6 3.9-1.6-1.3.2-5.6 2.8-8.8.9-1.1 2.1-2.3 2.8-3 .7-.7 1.1-1.2 1.1-1.7s-.4-1-1.1-1.7c-.7-.7-1.9-1.9-2.8-3-2.6-3.2-4.4-7.5-2.8-8.8 1.6-1.3 4.3 1.9 5.6 3.9 1.3-2 4-5.2 5.6-3.9 1.6 1.3-.2 5.6-2.8 8.8-.9 1.1-2.1 2.3-2.8 3-.7.7-1.1 1.2-1.1 1.7s.4 1 1.1 1.7c.7.7 1.9 1.9 2.8 3z"/></svg>
+                Bluesky
+            </a>
+            <a href="https://www.tumblr.com/elliott-luetk" class="social-link">
+                <svg viewBox="0 0 24 24" role="presentation" aria-hidden="true"><path d="M14.6 18.2c-1.8 0-3.2-.5-4.3-1.5-1-.9-1.5-2.3-1.5-4.1V9.4h-2.6V6.8h2.6V4.2c0-1.1.2-1.9.7-2.4.4-.5 1.2-.7 2.2-.7.9 0 1.8.1 2.8.3v2.7h-1.4c-.6 0-.9.1-1 .3-.1.2-.2.6-.2 1.1v2.2h2.8v2.6h-2.8v2.8c.1 1.2.6 1.8 1.6 1.8h.6v2.6l-2.1.2z"/></svg>
+                Tumblr
+            </a>
         </div>
     </aside>
 
