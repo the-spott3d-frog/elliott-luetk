@@ -1,1039 +1,617 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elliott-Luetk | Artistic Portfolio</title>
-    <link rel="icon" type="image/png" href="android-chrome-512x512.png">
-    <style>
-        /* ============================================================
-           ELLIOTT ARTS  ~  YEAR 2000 EDITION
-           Palette, buttons and behaviour unchanged.
-           ============================================================ */
-        :root {
-            /* --- original palette, untouched --- */
-            --forest-dark: #1a2f1a;
-            --forest-green: #2d4f2d;
-            --moss: #5c7a4f;
-            --earth-brown: #4a3728;
-            --soft-tan: #b8a68a;
-            --mist-white: #e8ece6;
-            --shadow-overlay: rgba(0, 0, 0, 0.15);
-            --accent-gold: #c9a962;
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Elliott-Luetk | Artistic Portfolio</title> <link rel="icon" type="image/png" href="android-chrome-512x512.png"> <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"> <style> :root { --forest-dark: #1a2f1a; --forest-green: #2d4f2d; --moss: #5c7a4f; --earth-brown: #4a3728; --soft-tan: #b8a68a; --mist-white: #e8ece6; --shadow-overlay: rgba(0, 0, 0, 0.15); --accent-gold: #c9a962; }     * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-            /* --- derived tokens --- */
-            --bevel-light: var(--soft-tan);
-            --bevel-dark: var(--forest-dark);
-            --panel: rgba(74, 55, 40, 0.38);
-            --chrome: linear-gradient(180deg, var(--moss) 0%, var(--forest-green) 100%);
-            --chrome-dark: linear-gradient(180deg, var(--forest-green) 0%, var(--forest-dark) 100%);
+    body {
+        font-family: 'Lora', serif;
+        background: linear-gradient(135deg, var(--forest-dark) 0%, var(--forest-green) 100%);
+        color: var(--mist-white);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
 
-            --header-h: 93px;
-            --ui-font: Verdana, Geneva, Arial, Helvetica, sans-serif;
-            --body-font: "Times New Roman", Times, Georgia, serif;
-            --mono-font: "Courier New", Courier, monospace;
-        }
+    /* Top Navigation Bar */
+    .top-nav {
+        background: rgba(26, 47, 26, 0.95);
+        padding: 1rem 2rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        backdrop-filter: blur(5px);
+        box-shadow: 0 2px 15px var(--shadow-overlay);
+        border-bottom: 1px solid var(--moss);
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    .logo-btn {
+        font-family: 'Cinzel', serif;
+        font-size: 1.5rem;
+        color: var(--mist-white);
+        text-decoration: none;
+        padding: 0.6rem 1.5rem;
+        border: 2px solid var(--accent-gold);
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        background: rgba(45, 79, 45, 0.5);
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    .logo-btn:hover {
+        background: var(--accent-gold);
+        color: var(--forest-dark);
+        box-shadow: 0 0 20px rgba(179, 141, 44, 0.4);
+    }
 
-        body {
-            font-family: var(--ui-font);
-            font-size: 13px;
-            line-height: 1.6;
-            color: var(--mist-white);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+    .nav-tabs {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+    }
 
-            /* Tiled "wallpaper", built only from the original palette */
-            background-color: var(--forest-dark);
-            background-image:
-                repeating-linear-gradient(45deg,
-                    rgba(92, 122, 79, 0.16) 0px, rgba(92, 122, 79, 0.16) 2px,
-                    transparent 2px, transparent 7px),
-                repeating-linear-gradient(-45deg,
-                    rgba(184, 166, 138, 0.06) 0px, rgba(184, 166, 138, 0.06) 1px,
-                    transparent 1px, transparent 11px),
-                linear-gradient(135deg, var(--forest-dark) 0%, var(--forest-green) 100%);
-            background-attachment: fixed;
-        }
+    .nav-tab {
+        background: rgba(92, 122, 79, 0.6);
+        color: var(--mist-white);
+        text-decoration: none;
+        padding: 0.7rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border: 1px solid var(--moss);
+    }
 
-        /* ============================================================
-           SHARED BEVELED BUTTON BASE
-           (logo, nav tabs, social links, drawer links, icon buttons)
-           ============================================================ */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.4rem;
-            font-family: var(--ui-font);
-            font-size: 0.72rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--mist-white);
-            text-decoration: none;
-            cursor: pointer;
-            padding: 0.55rem 0.9rem;
-            background: var(--chrome);
-            border: 3px solid;
-            border-color: var(--bevel-light) var(--bevel-dark) var(--bevel-dark) var(--bevel-light);
-            transition: background 0.15s ease, color 0.15s ease,
-                        box-shadow 0.15s ease, transform 0.15s ease;
-        }
+    .nav-tab:hover {
+        background: var(--moss);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(92, 122, 79, 0.4);
+    }
 
-        .btn:hover {
-            background: var(--moss);
-            color: var(--accent-gold);
-        }
+    /* Main Layout */
+    .layout-container {
+        display: flex;
+        flex: 1;
+        gap: 0;
+    }
 
-        .btn:active {
-            transform: translateY(0);
-            border-color: var(--bevel-dark) var(--bevel-light) var(--bevel-light) var(--bevel-dark);
-        }
+    /* Sidebar */
+    .sidebar {
+        width: 320px;
+        background: rgba(26, 47, 26, 0.7);
+        padding: 2rem;
+        height: calc(100vh - 80px);
+        position: sticky;
+        top: 80px;
+        overflow-y: auto;
+        border-right: 1px solid var(--moss);
+        backdrop-filter: blur(3px);
+    }
 
-        .btn--lift:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(92, 122, 79, 0.6);
-        }
+    .profile-section {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
 
-        .btn--block {
-            width: 100%;
-            justify-content: flex-start;
-            text-align: left;
-        }
+    /* Profile Picture Circular Crop Fix */
+    .profile-pic-placeholder {
+        width: 180px;
+        height: 180px;
+        margin: 0 auto 1.5rem;
+        background: linear-gradient(135deg, var(--moss) 0%, var(--forest-green) 100%);
+        border: 3px solid var(--accent-gold);
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
 
-        .btn--block:hover {
-            border-left-color: var(--accent-gold);
-            padding-left: 1.1rem;
-        }
+    .profile-pic-placeholder img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        display: block;
+    }
 
-        .btn--icon {
-            padding: 0;
-            flex: 0 0 auto;
-        }
+    .profile-pic-placeholder:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 30px rgba(179, 141, 44, 0.3);
+    }
 
-        /* ============================================================
-           STICKY HEADER
-           ============================================================ */
-        .site-header {
-            position: sticky;
-            top: 0;
-            z-index: 150;
-        }
+    .bio-text {
+        font-size: 0.95rem;
+        line-height: 1.8;
+        color: var(--soft-tan);
+        margin-bottom: 2rem;
+    }
 
-        .top-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.65rem 1rem;
-            background: var(--chrome-dark);
-            border-bottom: 3px solid var(--moss);
-            box-shadow: 0 3px 0 rgba(0, 0, 0, 0.35), 0 6px 14px var(--shadow-overlay);
-        }
+    .social-links {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--moss);
+    }
 
-        /* Logo button */
-        .logo-btn {
-            font-size: 1rem;
-            letter-spacing: 1.5px;
-            padding: 0.55rem 1.1rem;
-            color: var(--accent-gold);
-            text-shadow: 1px 1px 0 var(--forest-dark);
-        }
+    .social-link {
+        color: var(--mist-white);
+        text-decoration: none;
+        padding: 0.8rem;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        border-left: 3px solid var(--moss);
+        background: rgba(45, 79, 45, 0.3);
+    }
 
-        .logo-btn:hover {
-            background: var(--accent-gold);
-            color: var(--forest-dark);
-            text-shadow: none;
-            box-shadow: 0 0 16px rgba(201, 169, 98, 0.65);
-        }
+    .social-link:hover {
+        background: var(--moss);
+        border-left-color: var(--accent-gold);
+        padding-left: 1.2rem;
+    }
 
-        .nav-tabs {
-            display: flex;
-            gap: 0.5rem;
-            list-style: none;
-        }
+    /* Main Content Area */
+    .main-content {
+        flex: 1;
+        padding: 2rem;
+        background: linear-gradient(to bottom, rgba(26, 47, 26, 0.6), rgba(45, 79, 45, 0.4));
+    }
 
-        .menu-toggle {
-            display: none;
-            width: 46px;
-            height: 43px;
-            font-size: 1.3rem;
-        }
+    .page-section {
+        display: none;
+        animation: fadeIn 0.5s ease;
+    }
 
-        /* ============================================================
-           MARQUEE BAR
-           ============================================================ */
-        .marquee-bar {
-            overflow: hidden;
-            white-space: nowrap;
-            padding: 0.35rem 0;
-            background: var(--forest-dark);
-            border-bottom: 2px solid var(--moss);
-            box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.5);
-        }
+    .page-section.active {
+        display: block;
+    }
 
-        .marquee-inner {
-            display: inline-block;
-            padding-left: 100%;
-            font-size: 0.7rem;
-            font-weight: bold;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--accent-gold);
-            text-shadow: 0 0 8px rgba(201, 169, 98, 0.5);
-            animation: marquee 30s linear infinite;
-        }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
 
-        @keyframes marquee {
-            from { transform: translateX(0); }
-            to   { transform: translateX(-100%); }
-        }
+    .content-block {
+        background: rgba(74, 55, 40, 0.3);
+        padding: 2rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        border: 1px solid var(--moss);
+    }
 
-        /* ============================================================
-           LAYOUT
-           ============================================================ */
+    .content-block h2 {
+        font-family: 'Cinzel', serif;
+        color: var(--soft-tan);
+        margin-bottom: 1rem;
+        border-bottom: 2px solid var(--accent-gold);
+        padding-bottom: 0.5rem;
+    }
+
+    .image-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .image-card {
+        background: rgba(45, 79, 45, 0.5);
+        border-radius: 8px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        border: 1px solid var(--moss);
+    }
+
+    .image-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(92, 122, 79, 0.4);
+    }
+
+    .image-card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        display: block;
+    }
+
+    .image-card p {
+        padding: 1rem;
+        color: var(--soft-tan);
+        font-size: 0.9rem;
+    }
+
+    /* Decorative Elements */
+    .pine-accent {
+        text-align: center;
+        margin: 3rem 0;
+        font-size: 2rem;
+        color: var(--moss);
+        letter-spacing: 1rem;
+    }
+
+    /* Scrollbar Styling */
+    .sidebar::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .sidebar::-webkit-scrollbar-track {
+        background: rgba(45, 79, 45, 0.3);
+        border-radius: 4px;
+    }
+
+    .sidebar::-webkit-scrollbar-thumb {
+        background: var(--moss);
+        border-radius: 4px;
+    }
+
+    /* ===== Mobile Drawer Menu ===== */
+    .menu-toggle {
+        display: none;
+        background: rgba(45, 79, 45, 0.5);
+        border: 1px solid var(--moss);
+        color: var(--mist-white);
+        font-size: 1.5rem;
+        width: 44px;
+        height: 44px;
+        border-radius: 8px;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mobile-drawer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 280px;
+        max-width: 85vw;
+        height: 100vh;
+        background: rgba(26, 47, 26, 0.97);
+        z-index: 200;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        border-right: 1px solid var(--moss);
+        box-shadow: 4px 0 25px rgba(0, 0, 0, 0.5);
+    }
+
+    .mobile-drawer.open {
+        transform: translateX(0);
+    }
+
+    .drawer-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 190;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+
+    .drawer-backdrop.visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .drawer-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem;
+        border-bottom: 1px solid var(--moss);
+    }
+
+    .drawer-pfp {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--accent-gold);
+    }
+
+    .drawer-name {
+        font-family: 'Cinzel', serif;
+        color: var(--soft-tan);
+        font-size: 1rem;
+    }
+
+    .drawer-close {
+        margin-left: auto;
+        background: transparent;
+        border: none;
+        color: var(--mist-white);
+        font-size: 1.4rem;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        border-radius: 5px;
+    }
+
+    .drawer-close:hover {
+        background: var(--moss);
+    }
+
+    .drawer-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+
+    .drawer-link {
+        color: var(--mist-white);
+        text-decoration: none;
+        padding: 0.8rem 1rem;
+        border-radius: 8px;
+        border-left: 3px solid var(--moss);
+        background: rgba(45, 79, 45, 0.4);
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    .drawer-link:hover,
+    .drawer-link:active {
+        background: var(--moss);
+        border-left-color: var(--accent-gold);
+    }
+
+    /* Mobile profile display (hidden by default, shown only on mobile main page) */
+    .mobile-profile-display {
+        display: none;
+    }
+
+    /* ===== Responsive Design ===== */
+
+    @media (max-width: 900px) {
+        /* Stack layout vertically */
         .layout-container {
-            display: flex;
-            flex: 1;
+            flex-direction: column;
         }
 
-        /* ============================================================
-           SIDEBAR
-           ============================================================ */
+        /* Fix sidebar positioning on mobile */
         .sidebar {
-            width: 308px;
-            flex: 0 0 308px;
-            padding: 1.25rem;
-            position: sticky;
-            top: var(--header-h);
-            height: calc(100vh - var(--header-h));
-            overflow-y: auto;
-            background-color: rgba(26, 47, 26, 0.86);
-            background-image: repeating-linear-gradient(0deg,
-                rgba(92, 122, 79, 0.10) 0px, rgba(92, 122, 79, 0.10) 1px,
-                transparent 1px, transparent 4px);
-            border-right: 3px solid var(--moss);
-            box-shadow: inset -8px 0 16px rgba(0, 0, 0, 0.3);
-        }
-
-        .profile-section {
-            text-align: center;
-            margin-bottom: 1.25rem;
-        }
-
-        /* Round profile crop, now with a gold frame */
-        .profile-pic-placeholder {
-            width: 164px;
-            height: 164px;
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            border-radius: 50%;
-            border: 4px solid var(--accent-gold);
-            background: linear-gradient(135deg, var(--moss) 0%, var(--forest-green) 100%);
-            box-shadow: 0 0 0 4px var(--forest-dark), 0 0 20px rgba(201, 169, 98, 0.45);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .profile-pic-placeholder img {
-            display: block;
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
+            height: auto;
+            position: relative;
+            top: 0;
+            max-height: none;
+            padding: 1.5rem;
         }
 
-        .profile-pic-placeholder:hover {
-            transform: scale(1.04);
-            box-shadow: 0 0 0 4px var(--forest-dark), 0 0 30px rgba(201, 169, 98, 0.7);
+        /* Hide profile in sidebar on mobile */
+        .sidebar .profile-section {
+            display: none !important;
         }
 
-        .sidebar-name {
-            margin-bottom: 0.75rem;
-            font-family: var(--body-font);
-            font-size: 1.05rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--accent-gold);
-            text-shadow: 2px 2px 0 var(--forest-dark);
+        /* Show mobile profile display on main page */
+        #main-page .mobile-profile-display {
+            display: block !important;
+            margin-bottom: 2rem;
+        }
+
+        /* Smaller profile picture on mobile */
+        .profile-pic-placeholder {
+            width: 140px !important;
+            height: 140px !important;
+            margin: 0 auto 1rem;
+        }
+
+        /* Show hamburger menu */
+        .menu-toggle {
+            display: flex;
+        }
+
+        /* Hide top nav tabs on mobile */
+        .nav-tabs {
+            display: none;
+        }
+
+        /* Tablet adjustments */
+        .image-grid {
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        }
+
+        .main-content {
+            padding: 1.5rem;
+        }
+
+        .sidebar {
+            padding: 1.5rem;
+        }
+    }
+
+    /* Phone screens */
+    @media (max-width: 600px) {
+        .top-nav {
+            padding: 0.75rem 1rem;
+        }
+
+        .logo-btn {
+            font-size: 1.2rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .main-content {
+            padding: 1rem;
         }
 
         .bio-text {
-            margin-bottom: 1rem;
-            font-family: var(--body-font);
-            font-size: 0.95rem;
-            line-height: 1.75;
-            text-align: left;
-            color: var(--soft-tan);
+            font-size: 0.85rem;
+            line-height: 1.6;
         }
 
-        /* Hazard stripes — the classic "under construction" bar */
-        .construction {
-            height: 14px;
-            border-top: 2px solid var(--forest-dark);
-            border-bottom: 2px solid var(--forest-dark);
-            background: repeating-linear-gradient(45deg,
-                var(--accent-gold) 0px, var(--accent-gold) 10px,
-                var(--earth-brown) 10px, var(--earth-brown) 20px);
-        }
-
-        .tiny-note {
-            margin-top: 0.5rem;
-            font-size: 0.63rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            text-align: center;
-            color: var(--soft-tan);
-        }
-
-        /* Hit counter */
-        .counter-block {
-            margin: 1.1rem 0;
-            text-align: center;
-        }
-
-        .counter-label {
-            margin-bottom: 0.4rem;
-            font-size: 0.61rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: var(--soft-tan);
-        }
-
-        .counter {
-            display: flex;
-            justify-content: center;
-            gap: 3px;
-        }
-
-        .counter span {
-            padding: 0.1rem 0.35rem;
-            font-family: var(--mono-font);
-            font-size: 1rem;
-            font-weight: bold;
-            color: var(--accent-gold);
-            background: var(--forest-dark);
-            border: 2px inset var(--moss);
-            text-shadow: 0 0 7px rgba(201, 169, 98, 0.85);
-        }
-
-        /* Grooved divider */
-        .divider {
-            height: 8px;
-            margin: 1.1rem 0;
-            border-top: 2px solid var(--moss);
-            border-bottom: 2px solid var(--forest-dark);
-            background: var(--chrome-dark);
-        }
-
-        .social-links {
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-            padding-top: 1rem;
-            border-top: 2px groove var(--moss);
-        }
-
-        /* 88x31-style badges */
-        .badge-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.4rem;
-            margin-top: 1rem;
-        }
-
-        .badge {
-            min-width: 82px;
-            padding: 0.3rem 0.4rem;
-            font-size: 0.55rem;
-            line-height: 1.25;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            text-align: center;
-            color: var(--mist-white);
-            background: var(--forest-dark);
-            border: 2px outset var(--moss);
-        }
-
-        /* ============================================================
-           MAIN CONTENT
-           ============================================================ */
-        .main-content {
-            flex: 1;
-            min-width: 0;
-            padding: 1.5rem;
-            background: linear-gradient(to bottom,
-                rgba(26, 47, 26, 0.55) 0%,
-                rgba(45, 79, 45, 0.35) 100%);
-        }
-
-        .page-section {
-            display: none;
-            animation: fadeIn 0.35s ease;
-        }
-
-        .page-section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        .content-block {
-            margin-bottom: 1.25rem;
-            padding: 1.25rem;
-            background: var(--panel);
-            border: 3px solid;
-            border-color: var(--moss) var(--forest-dark) var(--forest-dark) var(--moss);
-            box-shadow: inset 0 0 0 1px rgba(232, 236, 230, 0.06), 0 4px 0 rgba(0, 0, 0, 0.28);
-        }
-
-        .content-block h2 {
-            margin-bottom: 1rem;
-            padding: 0.5rem 0.75rem;
-            font-family: var(--body-font);
-            font-size: 1.3rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-align: center;
-            color: var(--accent-gold);
-            background: var(--chrome-dark);
-            border: 2px solid var(--moss);
-            text-shadow: 2px 2px 0 var(--forest-dark);
-        }
-
-        .content-block p {
-            font-family: var(--body-font);
-            font-size: 1rem;
-            color: var(--mist-white);
-        }
-
-        /* Galleries */
         .image-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .image-card {
-            overflow: hidden;
-            background: var(--forest-green);
-            border: 3px solid;
-            border-color: var(--bevel-light) var(--bevel-dark) var(--bevel-dark) var(--bevel-light);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .image-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 22px rgba(92, 122, 79, 0.55);
         }
 
         .image-card img {
-            display: block;
-            width: 100%;
-            height: 213px;
-            object-fit: cover;
-            border-bottom: 2px solid var(--moss);
+            height: 180px;
         }
 
-        .image-card p {
-            padding: 0.6rem 0.7rem;
-            font-family: var(--ui-font);
-            font-size: 0.69rem;
-            color: var(--soft-tan);
+        .content-block {
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        /* "What's New" list */
-        .news-list {
-            list-style: none;
+        .content-block h2 {
+            font-size: 1.5rem;
+        }
+    }
+
+    /* Small phone screens */
+    @media (max-width: 480px) {
+        .image-grid {
+            grid-template-columns: 1fr;
         }
 
-        .news-list li {
-            position: relative;
-            padding: 0.4rem 0 0.4rem 1rem;
-            font-size: 0.73rem;
-            color: var(--soft-tan);
-            border-bottom: 1px dotted var(--moss);
+        .image-card img {
+            height: 200px;
         }
 
-        .news-list li:last-child {
-            border-bottom: none;
-        }
-
-        .news-list li::before {
-            content: "\25B8";
-            position: absolute;
-            left: 0;
-            color: var(--accent-gold);
-        }
-
-        .new-badge {
-            display: inline-block;
-            margin-right: 0.3rem;
-            padding: 0.05rem 0.3rem;
-            font-size: 0.57rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            vertical-align: middle;
-            color: var(--forest-dark);
-            background: var(--accent-gold);
-            border: 1px solid var(--forest-dark);
-        }
-
-        /* Decorative bits */
-        .pine-accent {
-            margin: 1.5rem 0;
-            font-size: 1.3rem;
-            letter-spacing: 0.9rem;
-            text-align: center;
-            color: var(--moss);
-            text-shadow: 0 0 10px rgba(92, 122, 79, 0.6);
-        }
-
-        .blink {
-            animation: blink 1.1s steps(1, end) infinite;
-        }
-
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
-
-        /* ============================================================
-           FOOTER
-           ============================================================ */
-        .site-footer {
-            padding: 1rem;
-            text-align: center;
-            background: var(--forest-dark);
-            border-top: 3px solid var(--moss);
-            box-shadow: inset 0 6px 14px rgba(0, 0, 0, 0.4);
-        }
-
-        .footer-text {
-            margin-top: 0.75rem;
-            font-size: 0.65rem;
-            letter-spacing: 0.5px;
-            color: var(--soft-tan);
-        }
-
-        /* ============================================================
-           SCROLLBAR
-           ============================================================ */
-        .sidebar::-webkit-scrollbar {
-            width: 12px;
-        }
-
-        .sidebar::-webkit-scrollbar-track {
-            background: var(--forest-dark);
-            border-left: 1px solid var(--moss);
-        }
-
-        .sidebar::-webkit-scrollbar-thumb {
-            background: var(--moss);
-            border: 2px outset var(--soft-tan);
-        }
-
-        /* ============================================================
-           MOBILE DRAWER MENU
-           ============================================================ */
-        .mobile-drawer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 200;
-            display: flex;
-            flex-direction: column;
-            width: 288px;
-            max-width: 85vw;
-            height: 100vh;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
-            background-color: rgba(26, 47, 26, 0.98);
-            background-image: repeating-linear-gradient(0deg,
-                rgba(92, 122, 79, 0.10) 0px, rgba(92, 122, 79, 0.10) 1px,
-                transparent 1px, transparent 4px);
-            border-right: 3px solid var(--moss);
-            box-shadow: 4px 0 25px rgba(0, 0, 0, 0.6);
-        }
-
-        .mobile-drawer.open {
-            transform: translateX(0);
-        }
-
-        .drawer-backdrop {
-            position: fixed;
-            inset: 0;
-            z-index: 190;
-            opacity: 0;
-            pointer-events: none;
-            background: rgba(0, 0, 0, 0.55);
-            transition: opacity 0.3s ease;
-        }
-
-        .drawer-backdrop.visible {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .drawer-header {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.9rem;
-            background: var(--chrome-dark);
-            border-bottom: 3px solid var(--moss);
-        }
-
-        .drawer-pfp {
-            width: 52px;
-            height: 52px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 3px solid var(--accent-gold);
-            box-shadow: 0 0 12px rgba(201, 169, 98, 0.5);
-        }
-
-        .drawer-name {
-            font-family: var(--body-font);
-            font-size: 0.95rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent-gold);
-            text-shadow: 2px 2px 0 var(--forest-dark);
-        }
-
-        .drawer-close {
-            width: 41px;
-            height: 37px;
-            margin-left: auto;
-            font-size: 1.1rem;
-        }
-
-        .drawer-nav {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
+        .content-block {
             padding: 1rem;
         }
 
-        .drawer-link {
-            min-height: 44px;
+        .sidebar {
+            padding: 1rem;
         }
+    }
+</style>
+</head> <body> <!-- Top Navigation Bar --> <nav class="top-nav"> <a href="#main-page" class="logo-btn" id="home-logo">Elliott Arts</a> <ul class="nav-tabs"> <li><a href="#main-page" class="nav-tab">Main Page</a></li> <li><a href="#photos" class="nav-tab">Photos</a></li> <li><a href="#art" class="nav-tab">Art</a></li> <li><a href="#info" class="nav-tab">Info</a></li> </ul> <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button> </nav> <!-- Mobile Drawer -->
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+<aside class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+        <img src="pfp.jpg" class="drawer-pfp" alt="Profile">
+        <span class="drawer-name">Elliott Arts</span>
+        <button class="drawer-close" id="drawerClose" aria-label="Close menu">✕</button>
+    </div>
+    <nav class="drawer-nav">
+        <a href="#main-page" class="drawer-link">Main Page</a>
+        <a href="#photos" class="drawer-link">Photos</a>
+        <a href="#art" class="drawer-link">Art</a>
+        <a href="#info" class="drawer-link">Info</a>
+    </nav>
+</aside>
 
-        /* Mobile profile card: hidden on desktop, shown on the mobile main page */
-        .mobile-profile-display {
-            display: none;
-        }
-
-        /* ============================================================
-           RESPONSIVE
-           ============================================================ */
-        @media (max-width: 980px) {
-            .layout-container {
-                flex-direction: column;
-            }
-
-            .sidebar {
-                position: relative;
-                top: 0;
-                width: 100%;
-                flex: 0 0 auto;
-                height: auto;
-                max-height: none;
-                border-right: none;
-                border-bottom: 3px solid var(--moss);
-                box-shadow: none;
-            }
-
-            /* Hide the sidebar profile on mobile… */
-            .sidebar .profile-section {
-                display: none !important;
-            }
-
-            /* …and show it at the top of the main page instead */
-            #main-page .mobile-profile-display {
-                display: block !important;
-                margin-bottom: 1.25rem;
-            }
-
-            .profile-pic-placeholder {
-                width: 134px !important;
-                height: 134px !important;
-                margin: 0 auto 1rem;
-            }
-
-            .menu-toggle {
-                display: inline-flex;
-            }
-
-            .nav-tabs {
-                display: none;
-            }
-
-            .main-content {
-                padding: 1.25rem;
-            }
-
-            .image-grid {
-                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            }
-        }
-
-        @media (max-width: 620px) {
-            .top-nav {
-                padding: 0.6rem 0.75rem;
-            }
-
-            .logo-btn {
-                font-size: 0.85rem;
-                padding: 0.5rem 0.8rem;
-                letter-spacing: 1px;
-            }
-
-            .main-content,
-            .sidebar {
-                padding: 1rem;
-            }
-
-            .content-block {
-                padding: 1rem;
-                margin-bottom: 1rem;
-            }
-
-            .content-block h2 {
-                font-size: 1.15rem;
-                letter-spacing: 1px;
-            }
-
-            .bio-text {
-                font-size: 0.87rem;
-                line-height: 1.65;
-            }
-
-            .image-grid {
-                gap: 0.85rem;
-            }
-
-            .image-card img {
-                height: 185px;
-            }
-        }
-
-        @media (max-width: 460px) {
-            .image-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .image-card img {
-                height: 205px;
-            }
-
-            .pine-accent {
-                letter-spacing: 0.5rem;
-            }
-        }
-
-        /* Respect reduced-motion preferences */
-        @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-            }
-
-            .marquee-inner {
-                animation: none;
-                padding-left: 0;
-            }
-
-            .blink,
-            .page-section {
-                animation: none;
-            }
-
-            .btn,
-            .image-card,
-            .profile-pic-placeholder {
-                transition: none;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- ============ STICKY HEADER ============ -->
-    <header class="site-header">
-        <!-- Top Navigation Bar -->
-        <nav class="top-nav">
-            <a href="#main-page" class="btn logo-btn" id="home-logo">Elliott Arts</a>
-            <ul class="nav-tabs">
-                <li><a href="#main-page" class="btn btn--lift nav-tab">Main Page</a></li>
-                <li><a href="#photos" class="btn btn--lift nav-tab">Photos</a></li>
-                <li><a href="#art" class="btn btn--lift nav-tab">Art</a></li>
-                <li><a href="#info" class="btn btn--lift nav-tab">Info</a></li>
-            </ul>
-            <button class="btn btn--icon menu-toggle" id="menuToggle" aria-label="Open menu">&#9776;</button>
-        </nav>
-
-        <!-- Scrolling ticker -->
-        <div class="marquee-bar">
-            <div class="marquee-inner">
-                &#9733; Welcome to Elliott Arts &#9733; Handmade art &amp; nature photography &#9733; Site last updated October 2026 &#9733; Sign my guestbook! &#9733; Best viewed with the lights off &#9733;
+<!-- Main Layout Container -->
+<div class="layout-container">
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
+        <div class="profile-section">
+            <div class="profile-pic-placeholder" id="profile-pic">
+                <img src="pfp.jpg" alt="Profile">
             </div>
+            <p class="bio-text" id="bio-content">
+                Replace this with your artist bio. Share your journey, inspiration, 
+                and creative philosophy in a few heartfelt paragraphs.
+            </p>
         </div>
-    </header>
-
-    <!-- ============ MOBILE DRAWER ============ -->
-    <div class="drawer-backdrop" id="drawerBackdrop"></div>
-    <aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile navigation">
-        <div class="drawer-header">
-            <img src="pfp.jpg" class="drawer-pfp" alt="Profile">
-            <span class="drawer-name">Elliott Arts</span>
-            <button class="btn btn--icon drawer-close" id="drawerClose" aria-label="Close menu">&#10005;</button>
+        
+        <div class="social-links" id="social-media">
+            <a href="https://www.instagram.com/elliott_luetk?exln=MTk1dnlvYzlidHRjZg%3D%3D" class="social-link">Instagram</a>
+            <a href="https://bsky.app/profile/elliott-luetk.bsky.social" class="social-link">Bluesky</a>
+            <a href="https://www.tumblr.com/elliott-luetk" class="social-link">Tumblr</a>
         </div>
-        <nav class="drawer-nav">
-            <a href="#main-page" class="btn btn--block drawer-link">Main Page</a>
-            <a href="#photos" class="btn btn--block drawer-link">Photos</a>
-            <a href="#art" class="btn btn--block drawer-link">Art</a>
-            <a href="#info" class="btn btn--block drawer-link">Info</a>
-        </nav>
     </aside>
 
-    <!-- ============ MAIN LAYOUT ============ -->
-    <div class="layout-container">
-        <!-- Left Sidebar -->
-        <aside class="sidebar">
-            <div class="profile-section">
-                <div class="profile-pic-placeholder" id="profile-pic">
-                    <img src="pfp.jpg" alt="Profile">
-                </div>
-                <p class="sidebar-name">Elliott Luetk</p>
-                <p class="bio-text" id="bio-content">
-                    Replace this with your artist bio. Share your journey, inspiration,
-                    and creative philosophy in a few heartfelt paragraphs.
-                </p>
-            </div>
-
-            <div class="construction" role="presentation"></div>
-            <p class="tiny-note">Site permanently under construction</p>
-
-            <div class="counter-block">
-                <p class="counter-label">Visitors since 1999</p>
-                <div class="counter" aria-hidden="true">
-                    <span>0</span><span>0</span><span>7</span><span>4</span><span>2</span><span>1</span>
-                </div>
-            </div>
-
-            <div class="divider" role="presentation"></div>
-
-            <div class="social-links" id="social-media">
-                <a href="https://www.instagram.com/elliott_luetk?exln=MTk1dnlvYzlidHRjZg%3D%3D" class="btn btn--block social-link">Instagram</a>
-                <a href="https://bsky.app/profile/elliott-luetk.bsky.social" class="btn btn--block social-link">Bluesky</a>
-                <a href="https://www.tumblr.com/elliott-luetk" class="btn btn--block social-link">Tumblr</a>
-            </div>
-
-            <div class="badge-row">
-                <span class="badge">Made with<br>Notepad</span>
-                <span class="badge">Best viewed<br>800 x 600</span>
-                <span class="badge">HTML 4.01<br>Valid!</span>
-                <span class="badge">No frames<br>here</span>
-            </div>
-        </aside>
-
-        <!-- Main Content Area -->
-        <main class="main-content">
-            <!-- ===== MAIN PAGE ===== -->
-            <section id="main-page" class="page-section active">
-                <!-- Mobile-only profile card -->
-                <div class="mobile-profile-display">
-                    <div class="content-block">
-                        <div class="profile-pic-placeholder" style="margin-bottom: 1rem;">
-                            <img src="pfp.jpg" alt="Profile">
-                        </div>
-                        <p class="sidebar-name">Elliott Luetk</p>
-                        <p class="bio-text" id="bio-content-mobile">
-                            Replace this with your artist bio. Share your journey, inspiration,
-                            and creative philosophy in a few heartfelt paragraphs.
-                        </p>
-                    </div>
-                </div>
-
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Main Page Section (SINGLE SECTION - no duplicates!) -->
+        <section id="main-page" class="page-section active">
+            <!-- Mobile-only profile display (shows on mobile, hidden on desktop) -->
+            <div class="mobile-profile-display">
                 <div class="content-block">
-                    <h2>Welcome to My Portfolio</h2>
-                    <p>
-                        Your introduction and featured work goes here. Pull up a chair, pour
-                        something warm, and have a wander around &mdash; everything on this
-                        site was made by hand.
+                    <div class="profile-pic-placeholder" style="margin-bottom: 1rem;">
+                        <img src="pfp.jpg" alt="Profile">
+                    </div>
+                    <p class="bio-text" id="bio-content-mobile">
+                        Replace this with your artist bio. Share your journey, inspiration, 
+                        and creative philosophy in a few heartfelt paragraphs.
                     </p>
                 </div>
+            </div>
+            
+            <!-- Welcome message (shown on both desktop and mobile) -->
+            <div class="content-block">
+                <h2>Welcome to My Portfolio</h2>
+                <p>Your introduction and featured work goes here.</p>
+            </div>
+        </section>
 
-                <div class="content-block">
-                    <h2>What's New</h2>
-                    <ul class="news-list">
-                        <li><span class="new-badge">New</span>Photo gallery opened &mdash; come see the forest series.</li>
-                        <li><span class="new-badge">New</span>Commission slots for the season are now listed on the Info page.</li>
-                        <li>Added a Bluesky link to the sidebar. Come say hello!</li>
-                        <li>Fixed the guestbook. Sorry about that.</li>
-                    </ul>
-                </div>
-
-                <div class="pine-accent" aria-hidden="true">&#9650; &#9650; &#9650; &#9650; &#9650;</div>
-            </section>
-
-            <!-- ===== PHOTOS ===== -->
-            <section id="photos" class="page-section">
-                <div class="content-block">
-                    <h2>Photography Collection</h2>
-                    <p>Natural landscapes and moments captured through the lens.</p>
-
-                    <div class="image-grid" id="photo-gallery">
-                        <!-- Add photo cards like this:
-                        <div class="image-card">
-                            <img src="your-image.jpg" alt="Description">
-                            <p>Caption or description</p>
-                        </div>
-                        -->
+        <!-- Photos Section -->
+        <section id="photos" class="page-section">
+            <div class="content-block">
+                <h2>Photography Collection</h2>
+                <p>Natural landscapes and moments captured through the lens.</p>
+                
+                <div class="image-grid" id="photo-gallery">
+                    <!-- Add photo cards like this:
+                    <div class="image-card">
+                        <img src="your-image.jpg" alt="Description">
+                        <p>Caption or description</p>
                     </div>
+                    -->
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- ===== ART ===== -->
-            <section id="art" class="page-section">
-                <div class="content-block">
-                    <h2>Artwork Gallery</h2>
-                    <p>Digital art, traditional pieces, and creative explorations.</p>
-
-                    <div class="image-grid" id="art-gallery">
-                        <!-- Add artwork cards like this:
-                        <div class="image-card">
-                            <img src="your-artwork.jpg" alt="Description">
-                            <p>Medium, size, year</p>
-                        </div>
-                        -->
+        <!-- Art Section -->
+        <section id="art" class="page-section">
+            <div class="content-block">
+                <h2>Artwork Gallery</h2>
+                <p>Digital art, traditional pieces, and creative explorations.</p>
+                
+                <div class="image-grid" id="art-gallery">
+                    <!-- Add artwork cards like this:
+                    <div class="image-card">
+                        <img src="your-artwork.jpg" alt="Description">
+                        <p>Medium, size, year</p>
                     </div>
+                    -->
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- ===== INFO ===== -->
-            <section id="info" class="page-section">
-                <div class="content-block">
-                    <h2>About Me &amp; Contact</h2>
-                    <p>More detailed information, exhibitions, commissions, etc.</p>
-                </div>
+        <!-- Info Section -->
+        <section id="info" class="page-section">
+            <div class="content-block">
+                <h2>About Me & Contact</h2>
+                <p>More detailed information, exhibitions, commissions, etc.</p>
+            </div>
 
-                <div class="content-block">
-                    <h2>Exhibitions &amp; Shows</h2>
-                    <p>List your past and upcoming exhibitions here.</p>
-                </div>
-            </section>
-        </main>
-    </div>
+            <div class="content-block">
+                <h2>Exhibitions & Shows</h2>
+                <p>List your past and upcoming exhibitions here.</p>
+            </div>
+        </section>
+    </main>
+</div>
 
-    <!-- ============ FOOTER ============ -->
-    <footer class="site-footer">
-        <div class="badge-row">
-            <span class="badge">Powered by<br>a keyboard</span>
-            <span class="badge">&#9733; Thanks for<br>visiting &#9733;</span>
-        </div>
-        <p class="footer-text">
-            &copy; Elliott Arts &mdash; All artwork and photographs belong to their maker.
-            <span class="blink">&#9679;</span>
-        </p>
-    </footer>
-
-    <!-- ============ SCRIPTS ============ -->
-    <script>
-        (function () {
-            'use strict';
-
-            var drawer = document.getElementById('mobileDrawer');
-            var backdrop = document.getElementById('drawerBackdrop');
-            var menuToggle = document.getElementById('menuToggle');
-            var drawerClose = document.getElementById('drawerClose');
-            var MOBILE_BREAKPOINT = 980;
-
-            /* ---------- Drawer ---------- */
-            function openDrawer() {
-                drawer.classList.add('open');
-                backdrop.classList.add('visible');
-                document.body.style.overflow = 'hidden';
-            }
-
-            function closeDrawer() {
-                drawer.classList.remove('open');
-                backdrop.classList.remove('visible');
-                document.body.style.overflow = '';
-            }
-
-            /* ---------- Section switching ---------- */
-            function showSection(id) {
-                var target = document.getElementById(id) || document.getElementById('main-page');
-                var sections = document.querySelectorAll('.page-section');
-
-                Array.prototype.forEach.call(sections, function (section) {
-                    section.classList.remove('active');
-                });
-
-                target.classList.add('active');
-            }
-
-            function hashTarget() {
-                return (window.location.hash || '#main-page').substring(1);
-            }
-
-            /* ---------- Navigation (delegated, covers tabs + drawer + logo) ---------- */
-            document.addEventListener('click', function (event) {
-                var link = event.target.closest('.nav-tab, .drawer-link, #home-logo');
-                if (!link) { return; }
-
-                event.preventDefault();
-
-                var href = link.getAttribute('href');
-                showSection(href.substring(1));
-
-                /* Update URL without reloading */
-                window.history.pushState(null, '', href);
-
-                /* Close the drawer on mobile after navigating */
-                if (window.innerWidth <= MOBILE_BREAKPOINT) {
-                    closeDrawer();
-                }
+<!-- Tab Switching Script -->
+<script>
+    // Handle tab navigation (includes drawer links)
+    document.querySelectorAll('.nav-tab, .drawer-link, #home-logo').forEach(tab => {
+        tab.addEventListener('click', function(e) {
+            e.preventDefault();
+    
+            // Remove active class from all sections
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
             });
-
-            /* ---------- Drawer triggers ---------- */
-            menuToggle.addEventListener('click', openDrawer);
-            drawerClose.addEventListener('click', closeDrawer);
-            backdrop.addEventListener('click', closeDrawer);
-
-            document.addEventListener('keydown', function (event) {
-                if (event.key === 'Escape') { closeDrawer(); }
-            });
-
-            /* ---------- Browser back / forward ---------- */
-            window.addEventListener('popstate', function () {
-                showSection(hashTarget());
-            });
-
-            /* ---------- Initial section from the URL hash ---------- */
-            showSection(hashTarget());
-        })();
-    </script>
-</body>
-</html>
+    
+            // Add active class to target section
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+    
+            // Update URL without reloading
+            window.history.pushState(null, '', this.getAttribute('href'));
