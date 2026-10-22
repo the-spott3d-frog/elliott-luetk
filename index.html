@@ -1,112 +1,176 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Elliott-Luetk | Artistic Portfolio</title> <link rel="icon" type="image/png" href="android-chrome-512x512.png"> <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"> <style> :root { --forest-dark: #1a2f1a; --forest-green: #2d4f2d; --moss: #5c7a4f; --earth-brown: #4a3728; --soft-tan: #b8a68a; --mist-white: #e8ece6; --shadow-overlay: rgba(0, 0, 0, 0.15); --accent-gold: #c9a962; }     * {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elliott-Luetk | Artistic Portfolio</title>
+<link rel="icon" type="image/png" href="android-chrome-512x512.png">
+<style>
+    /* ============================================================
+       ELLIOTT ARTS — RETRO EDITION (circa 2000-2010)
+       Same palette, same features, same markup hooks.
+       ============================================================ */
+
+    :root {
+        --forest-dark: #1a2f1a;
+        --forest-green: #2d4f2d;
+        --moss: #5c7a4f;
+        --earth-brown: #4a3728;
+        --soft-tan: #b8a68a;
+        --mist-white: #e8ece6;
+        --shadow-overlay: rgba(0, 0, 0, 0.15);
+        --accent-gold: #c9a962;
+        --nav-h: 72px;
+    }
+
+    * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
     }
 
     body {
-        font-family: 'Lora', serif;
-        background: linear-gradient(135deg, var(--forest-dark) 0%, var(--forest-green) 100%);
+        font-family: Verdana, Geneva, Tahoma, Arial, sans-serif;
+        font-size: 12px;
+        line-height: 1.6;
+        background-color: var(--forest-dark);
+        /* Tiled "wallpaper" texture, old-school style */
+        background-image:
+            repeating-linear-gradient(0deg,
+                rgba(184, 166, 138, 0.035) 0px,
+                rgba(184, 166, 138, 0.035) 1px,
+                transparent 1px,
+                transparent 3px),
+            repeating-linear-gradient(90deg,
+                rgba(92, 122, 79, 0.09) 0px,
+                rgba(92, 122, 79, 0.09) 1px,
+                transparent 1px,
+                transparent 26px),
+            linear-gradient(135deg, var(--forest-dark) 0%, var(--forest-green) 55%, var(--forest-dark) 100%);
+        background-attachment: fixed;
         color: var(--mist-white);
         min-height: 100vh;
         display: flex;
         flex-direction: column;
     }
 
-    /* Top Navigation Bar */
+    ::selection {
+        background: var(--accent-gold);
+        color: var(--forest-dark);
+    }
+
+    /* ===== Top Navigation Bar ===== */
     .top-nav {
-        background: rgba(26, 47, 26, 0.95);
-        padding: 1rem 2rem;
+        height: var(--nav-h);
+        padding: 0 16px;
+        background: linear-gradient(to bottom,
+            #3d673d 0%,
+            var(--forest-green) 45%,
+            var(--forest-dark) 100%);
         position: sticky;
         top: 0;
         z-index: 100;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        backdrop-filter: blur(5px);
-        box-shadow: 0 2px 15px var(--shadow-overlay);
-        border-bottom: 1px solid var(--moss);
+        border-bottom: 3px ridge var(--moss);
+        box-shadow: 0 3px 0 rgba(0, 0, 0, 0.35);
     }
 
     .logo-btn {
-        font-family: 'Cinzel', serif;
-        font-size: 1.5rem;
+        font-family: Georgia, "Times New Roman", Times, serif;
+        font-size: 17px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
         color: var(--mist-white);
         text-decoration: none;
-        padding: 0.6rem 1.5rem;
-        border: 2px solid var(--accent-gold);
-        border-radius: 25px;
-        transition: all 0.3s ease;
-        background: rgba(45, 79, 45, 0.5);
+        padding: 6px 16px;
+        border: 3px outset var(--accent-gold);
+        background: linear-gradient(to bottom,
+            var(--moss) 0%,
+            var(--forest-green) 50%,
+            var(--forest-dark) 100%);
+        text-shadow: 1px 1px 0 #000;
     }
 
     .logo-btn:hover {
         background: var(--accent-gold);
         color: var(--forest-dark);
-        box-shadow: 0 0 20px rgba(179, 141, 44, 0.4);
+        border-style: inset;
+        text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.45);
     }
 
     .nav-tabs {
         display: flex;
-        gap: 1.5rem;
+        gap: 6px;
         list-style: none;
     }
 
     .nav-tab {
-        background: rgba(92, 122, 79, 0.6);
+        display: block;
+        background: linear-gradient(to bottom, var(--moss) 0%, var(--forest-green) 100%);
         color: var(--mist-white);
-        text-decoration: none;
-        padding: 0.7rem 1.5rem;
-        border-radius: 8px;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        border: 1px solid var(--moss);
+        text-decoration: underline;
+        padding: 7px 14px;
+        border: 2px outset var(--moss);
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 11px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-shadow: 1px 1px 0 #000;
     }
 
-    .nav-tab:hover {
-        background: var(--moss);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(92, 122, 79, 0.4);
+    .nav-tab:hover,
+    .nav-tab:focus {
+        background: var(--soft-tan);
+        color: var(--forest-dark);
+        border-style: inset;
+        text-shadow: none;
     }
 
-    /* Main Layout */
+    /* ===== Main Layout ===== */
     .layout-container {
         display: flex;
         flex: 1;
         gap: 0;
     }
 
-    /* Sidebar */
+    /* ===== Sidebar ===== */
     .sidebar {
-        width: 320px;
-        background: rgba(26, 47, 26, 0.7);
-        padding: 2rem;
-        height: calc(100vh - 80px);
+        width: 310px;
+        background-color: rgba(26, 47, 26, 0.9);
+        background-image: repeating-linear-gradient(45deg,
+            rgba(92, 122, 79, 0.1) 0px,
+            rgba(92, 122, 79, 0.1) 2px,
+            transparent 2px,
+            transparent 7px);
+        padding: 16px;
+        height: calc(100vh - var(--nav-h));
         position: sticky;
-        top: 80px;
+        top: var(--nav-h);
         overflow-y: auto;
-        border-right: 1px solid var(--moss);
-        backdrop-filter: blur(3px);
+        border-right: 3px ridge var(--moss);
     }
 
     .profile-section {
         text-align: center;
-        margin-bottom: 2rem;
+        margin-bottom: 18px;
     }
 
     /* Profile Picture Circular Crop Fix */
     .profile-pic-placeholder {
-        width: 180px;
-        height: 180px;
-        margin: 0 auto 1.5rem;
+        width: 170px;
+        height: 170px;
+        margin: 0 auto 14px;
         background: linear-gradient(135deg, var(--moss) 0%, var(--forest-green) 100%);
-        border: 3px solid var(--accent-gold);
+        border: 4px double var(--accent-gold);
         border-radius: 50%;
         overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: all 0.3s ease;
     }
 
     .profile-pic-placeholder img {
@@ -118,165 +182,215 @@
     }
 
     .profile-pic-placeholder:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 30px rgba(179, 141, 44, 0.3);
+        border-color: var(--soft-tan);
     }
 
     .bio-text {
-        font-size: 0.95rem;
-        line-height: 1.8;
+        font-family: Georgia, "Times New Roman", Times, serif;
+        font-size: 12px;
+        line-height: 1.7;
         color: var(--soft-tan);
-        margin-bottom: 2rem;
+        margin-bottom: 18px;
+        padding: 10px;
+        border: 1px dashed var(--moss);
+        background: rgba(45, 79, 45, 0.35);
     }
 
     .social-links {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
-        padding-top: 1.5rem;
-        border-top: 1px solid var(--moss);
+        gap: 8px;
+        padding-top: 14px;
+        border-top: 2px groove var(--moss);
     }
 
     .social-link {
+        display: block;
         color: var(--mist-white);
-        text-decoration: none;
-        padding: 0.8rem;
-        border-radius: 5px;
-        transition: all 0.3s ease;
-        border-left: 3px solid var(--moss);
-        background: rgba(45, 79, 45, 0.3);
+        text-decoration: underline;
+        padding: 8px 10px;
+        border: 2px outset var(--moss);
+        background: linear-gradient(to bottom,
+            rgba(92, 122, 79, 0.75) 0%,
+            rgba(45, 79, 45, 0.75) 100%);
+        font-size: 11px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-shadow: 1px 1px 0 #000;
+    }
+
+    .social-link::before {
+        content: "\00BB  ";
+        color: var(--accent-gold);
     }
 
     .social-link:hover {
-        background: var(--moss);
-        border-left-color: var(--accent-gold);
-        padding-left: 1.2rem;
+        background: var(--soft-tan);
+        color: var(--forest-dark);
+        border-style: inset;
+        text-shadow: none;
     }
 
-    /* Main Content Area */
+    .social-link:hover::before {
+        color: var(--earth-brown);
+    }
+
+    /* ===== Main Content Area ===== */
     .main-content {
         flex: 1;
-        padding: 2rem;
-        background: linear-gradient(to bottom, rgba(26, 47, 26, 0.6), rgba(45, 79, 45, 0.4));
+        padding: 16px;
+        background: rgba(26, 47, 26, 0.35);
     }
 
     .page-section {
         display: none;
-        animation: fadeIn 0.5s ease;
     }
 
     .page-section.active {
         display: block;
+        animation: fadeIn 0.25s linear;
     }
 
     @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
+        from { opacity: 0; }
+        to { opacity: 1; }
     }
 
+    /* Boxed "panel" with a glossy title bar */
     .content-block {
-        background: rgba(74, 55, 40, 0.3);
-        padding: 2rem;
-        border-radius: 12px;
-        margin-bottom: 2rem;
-        border: 1px solid var(--moss);
+        background: rgba(74, 55, 40, 0.35);
+        padding: 14px;
+        margin-bottom: 18px;
+        border: 2px ridge var(--moss);
     }
 
     .content-block h2 {
-        font-family: 'Cinzel', serif;
-        color: var(--soft-tan);
-        margin-bottom: 1rem;
-        border-bottom: 2px solid var(--accent-gold);
-        padding-bottom: 0.5rem;
+        font-family: Georgia, "Times New Roman", Times, serif;
+        font-size: 15px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--forest-dark);
+        text-align: center;
+        background: linear-gradient(to bottom,
+            #ddc98a 0%,
+            var(--accent-gold) 50%,
+            #a8873f 100%);
+        border: 2px outset var(--accent-gold);
+        padding: 5px 8px;
+        margin: -14px -14px 12px -14px;
+        text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.45);
+    }
+
+    .content-block p {
+        font-size: 12px;
+        color: var(--mist-white);
     }
 
     .image-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 1.5rem;
-        margin-top: 1.5rem;
+        gap: 14px;
+        margin-top: 14px;
     }
 
     .image-card {
-        background: rgba(45, 79, 45, 0.5);
-        border-radius: 8px;
-        overflow: hidden;
-        transition: all 0.3s ease;
-        border: 1px solid var(--moss);
+        background: var(--forest-green);
+        border: 2px outset var(--moss);
+        padding: 5px;
     }
 
     .image-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(92, 122, 79, 0.4);
+        background: var(--moss);
+        border-style: inset;
     }
 
     .image-card img {
         width: 100%;
-        height: 220px;
+        height: 210px;
         object-fit: cover;
         display: block;
+        border: 1px solid var(--forest-dark);
     }
 
     .image-card p {
-        padding: 1rem;
+        padding: 8px 4px 2px;
+        margin-top: 6px;
+        border-top: 1px dashed var(--soft-tan);
         color: var(--soft-tan);
-        font-size: 0.9rem;
+        font-family: Georgia, "Times New Roman", Times, serif;
+        font-size: 11px;
+        font-style: italic;
+        text-align: center;
     }
 
     /* Decorative Elements */
     .pine-accent {
         text-align: center;
-        margin: 3rem 0;
-        font-size: 2rem;
+        margin: 24px 0;
+        font-size: 20px;
         color: var(--moss);
-        letter-spacing: 1rem;
+        letter-spacing: 12px;
+        text-shadow: 1px 1px 0 #000;
     }
 
-    /* Scrollbar Styling */
+    /* Chunky square scrollbar */
     .sidebar::-webkit-scrollbar {
-        width: 8px;
+        width: 16px;
     }
 
     .sidebar::-webkit-scrollbar-track {
-        background: rgba(45, 79, 45, 0.3);
-        border-radius: 4px;
+        background: rgba(45, 79, 45, 0.5);
+        border: 1px inset var(--moss);
     }
 
     .sidebar::-webkit-scrollbar-thumb {
         background: var(--moss);
-        border-radius: 4px;
+        border: 2px outset var(--soft-tan);
     }
 
     /* ===== Mobile Drawer Menu ===== */
     .menu-toggle {
         display: none;
-        background: rgba(45, 79, 45, 0.5);
-        border: 1px solid var(--moss);
+        background: linear-gradient(to bottom, var(--moss) 0%, var(--forest-green) 100%);
+        border: 2px outset var(--moss);
         color: var(--mist-white);
-        font-size: 1.5rem;
-        width: 44px;
-        height: 44px;
-        border-radius: 8px;
+        font-size: 20px;
+        width: 46px;
+        height: 42px;
         cursor: pointer;
         align-items: center;
         justify-content: center;
+        text-shadow: 1px 1px 0 #000;
+    }
+
+    .menu-toggle:hover {
+        border-style: inset;
+        background: var(--soft-tan);
+        color: var(--forest-dark);
+        text-shadow: none;
     }
 
     .mobile-drawer {
         position: fixed;
         top: 0;
         left: 0;
-        width: 280px;
+        width: 290px;
         max-width: 85vw;
         height: 100vh;
-        background: rgba(26, 47, 26, 0.97);
+        background-color: rgba(26, 47, 26, 0.98);
+        background-image: repeating-linear-gradient(45deg,
+            rgba(92, 122, 79, 0.1) 0px,
+            rgba(92, 122, 79, 0.1) 2px,
+            transparent 2px,
+            transparent 7px);
         z-index: 200;
         transform: translateX(-100%);
         transition: transform 0.3s ease;
         display: flex;
         flex-direction: column;
-        border-right: 1px solid var(--moss);
-        box-shadow: 4px 0 25px rgba(0, 0, 0, 0.5);
+        border-right: 3px ridge var(--moss);
+        box-shadow: 4px 0 0 rgba(0, 0, 0, 0.5);
     }
 
     .mobile-drawer.open {
@@ -286,7 +400,7 @@
     .drawer-backdrop {
         position: fixed;
         inset: 0;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.55);
         z-index: 190;
         opacity: 0;
         pointer-events: none;
@@ -301,9 +415,10 @@
     .drawer-header {
         display: flex;
         align-items: center;
-        gap: 0.75rem;
-        padding: 1rem;
-        border-bottom: 1px solid var(--moss);
+        gap: 10px;
+        padding: 12px;
+        border-bottom: 2px groove var(--moss);
+        background: linear-gradient(to bottom, var(--forest-green) 0%, var(--forest-dark) 100%);
     }
 
     .drawer-pfp {
@@ -311,54 +426,68 @@
         height: 56px;
         border-radius: 50%;
         object-fit: cover;
-        border: 2px solid var(--accent-gold);
+        border: 3px double var(--accent-gold);
     }
 
     .drawer-name {
-        font-family: 'Cinzel', serif;
+        font-family: Georgia, "Times New Roman", Times, serif;
         color: var(--soft-tan);
-        font-size: 1rem;
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-shadow: 1px 1px 0 #000;
     }
 
     .drawer-close {
         margin-left: auto;
-        background: transparent;
-        border: none;
+        background: linear-gradient(to bottom, var(--moss) 0%, var(--forest-green) 100%);
+        border: 2px outset var(--moss);
         color: var(--mist-white);
-        font-size: 1.4rem;
+        font-size: 16px;
+        font-weight: bold;
         cursor: pointer;
         width: 40px;
-        height: 40px;
-        border-radius: 5px;
+        height: 36px;
     }
 
     .drawer-close:hover {
-        background: var(--moss);
+        border-style: inset;
+        background: var(--soft-tan);
+        color: var(--forest-dark);
     }
 
     .drawer-nav {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
-        padding: 1rem;
+        gap: 8px;
+        padding: 12px;
     }
 
     .drawer-link {
         color: var(--mist-white);
-        text-decoration: none;
-        padding: 0.8rem 1rem;
-        border-radius: 8px;
-        border-left: 3px solid var(--moss);
-        background: rgba(45, 79, 45, 0.4);
+        text-decoration: underline;
+        padding: 10px 12px;
+        border: 2px outset var(--moss);
+        background: linear-gradient(to bottom,
+            rgba(92, 122, 79, 0.8) 0%,
+            rgba(45, 79, 45, 0.8) 100%);
         min-height: 44px;
         display: flex;
         align-items: center;
+        font-size: 11px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-shadow: 1px 1px 0 #000;
     }
 
     .drawer-link:hover,
     .drawer-link:active {
-        background: var(--moss);
-        border-left-color: var(--accent-gold);
+        background: var(--soft-tan);
+        color: var(--forest-dark);
+        border-style: inset;
+        text-shadow: none;
     }
 
     /* Mobile profile display (hidden by default, shown only on mobile main page) */
@@ -381,7 +510,9 @@
             position: relative;
             top: 0;
             max-height: none;
-            padding: 1.5rem;
+            padding: 14px;
+            border-right: none;
+            border-bottom: 3px ridge var(--moss);
         }
 
         /* Hide profile in sidebar on mobile */
@@ -392,14 +523,14 @@
         /* Show mobile profile display on main page */
         #main-page .mobile-profile-display {
             display: block !important;
-            margin-bottom: 2rem;
+            margin-bottom: 18px;
         }
 
         /* Smaller profile picture on mobile */
         .profile-pic-placeholder {
-            width: 140px !important;
-            height: 140px !important;
-            margin: 0 auto 1rem;
+            width: 130px !important;
+            height: 130px !important;
+            margin: 0 auto 12px;
         }
 
         /* Show hamburger menu */
@@ -418,50 +549,53 @@
         }
 
         .main-content {
-            padding: 1.5rem;
-        }
-
-        .sidebar {
-            padding: 1.5rem;
+            padding: 14px;
         }
     }
 
     /* Phone screens */
     @media (max-width: 600px) {
+        :root {
+            --nav-h: 62px;
+        }
+
         .top-nav {
-            padding: 0.75rem 1rem;
+            padding: 0 10px;
         }
 
         .logo-btn {
-            font-size: 1.2rem;
-            padding: 0.5rem 1rem;
+            font-size: 13px;
+            padding: 5px 10px;
+            letter-spacing: 1px;
         }
 
         .main-content {
-            padding: 1rem;
+            padding: 10px;
         }
 
         .bio-text {
-            font-size: 0.85rem;
+            font-size: 11px;
             line-height: 1.6;
         }
 
         .image-grid {
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 1rem;
+            gap: 12px;
         }
 
         .image-card img {
-            height: 180px;
+            height: 175px;
         }
 
         .content-block {
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
+            padding: 10px;
+            margin-bottom: 14px;
         }
 
         .content-block h2 {
-            font-size: 1.5rem;
+            font-size: 13px;
+            letter-spacing: 1px;
+            margin: -10px -10px 10px -10px;
         }
     }
 
@@ -472,25 +606,43 @@
         }
 
         .image-card img {
-            height: 200px;
+            height: 195px;
         }
 
         .content-block {
-            padding: 1rem;
+            padding: 8px;
+        }
+
+        .content-block h2 {
+            margin: -8px -8px 10px -8px;
         }
 
         .sidebar {
-            padding: 1rem;
+            padding: 10px;
         }
     }
 </style>
-</head> <body> <!-- Top Navigation Bar --> <nav class="top-nav"> <a href="#main-page" class="logo-btn" id="home-logo">Elliott Arts</a> <ul class="nav-tabs"> <li><a href="#main-page" class="nav-tab">Main Page</a></li> <li><a href="#photos" class="nav-tab">Photos</a></li> <li><a href="#art" class="nav-tab">Art</a></li> <li><a href="#info" class="nav-tab">Info</a></li> </ul> <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button> </nav> <!-- Mobile Drawer -->
+</head>
+<body>
+<!-- Top Navigation Bar -->
+<nav class="top-nav">
+    <a href="#main-page" class="logo-btn" id="home-logo">Elliott Arts</a>
+    <ul class="nav-tabs">
+        <li><a href="#main-page" class="nav-tab">Main Page</a></li>
+        <li><a href="#photos" class="nav-tab">Photos</a></li>
+        <li><a href="#art" class="nav-tab">Art</a></li>
+        <li><a href="#info" class="nav-tab">Info</a></li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">&#9776;</button>
+</nav>
+
+<!-- Mobile Drawer -->
 <div class="drawer-backdrop" id="drawerBackdrop"></div>
 <aside class="mobile-drawer" id="mobileDrawer">
     <div class="drawer-header">
         <img src="pfp.jpg" class="drawer-pfp" alt="Profile">
         <span class="drawer-name">Elliott Arts</span>
-        <button class="drawer-close" id="drawerClose" aria-label="Close menu">✕</button>
+        <button class="drawer-close" id="drawerClose" aria-label="Close menu">&#10005;</button>
     </div>
     <nav class="drawer-nav">
         <a href="#main-page" class="drawer-link">Main Page</a>
@@ -509,11 +661,11 @@
                 <img src="pfp.jpg" alt="Profile">
             </div>
             <p class="bio-text" id="bio-content">
-                Replace this with your artist bio. Share your journey, inspiration, 
+                Replace this with your artist bio. Share your journey, inspiration,
                 and creative philosophy in a few heartfelt paragraphs.
             </p>
         </div>
-        
+
         <div class="social-links" id="social-media">
             <a href="https://www.instagram.com/elliott_luetk?exln=MTk1dnlvYzlidHRjZg%3D%3D" class="social-link">Instagram</a>
             <a href="https://bsky.app/profile/elliott-luetk.bsky.social" class="social-link">Bluesky</a>
@@ -532,12 +684,12 @@
                         <img src="pfp.jpg" alt="Profile">
                     </div>
                     <p class="bio-text" id="bio-content-mobile">
-                        Replace this with your artist bio. Share your journey, inspiration, 
+                        Replace this with your artist bio. Share your journey, inspiration,
                         and creative philosophy in a few heartfelt paragraphs.
                     </p>
                 </div>
             </div>
-            
+
             <!-- Welcome message (shown on both desktop and mobile) -->
             <div class="content-block">
                 <h2>Welcome to My Portfolio</h2>
@@ -550,7 +702,7 @@
             <div class="content-block">
                 <h2>Photography Collection</h2>
                 <p>Natural landscapes and moments captured through the lens.</p>
-                
+
                 <div class="image-grid" id="photo-gallery">
                     <!-- Add photo cards like this:
                     <div class="image-card">
@@ -567,7 +719,7 @@
             <div class="content-block">
                 <h2>Artwork Gallery</h2>
                 <p>Digital art, traditional pieces, and creative explorations.</p>
-                
+
                 <div class="image-grid" id="art-gallery">
                     <!-- Add artwork cards like this:
                     <div class="image-card">
@@ -582,36 +734,86 @@
         <!-- Info Section -->
         <section id="info" class="page-section">
             <div class="content-block">
-                <h2>About Me & Contact</h2>
+                <h2>About Me &amp; Contact</h2>
                 <p>More detailed information, exhibitions, commissions, etc.</p>
             </div>
 
             <div class="content-block">
-                <h2>Exhibitions & Shows</h2>
+                <h2>Exhibitions &amp; Shows</h2>
                 <p>List your past and upcoming exhibitions here.</p>
             </div>
         </section>
     </main>
 </div>
 
-<!-- Tab Switching Script -->
+<!-- Tab Switching + Drawer Script -->
 <script>
-    // Handle tab navigation (includes drawer links)
-    document.querySelectorAll('.nav-tab, .drawer-link, #home-logo').forEach(tab => {
-        tab.addEventListener('click', function(e) {
-            e.preventDefault();
-    
-            // Remove active class from all sections
-            document.querySelectorAll('.page-section').forEach(section => {
+    (function () {
+        var menuToggle = document.getElementById('menuToggle');
+        var mobileDrawer = document.getElementById('mobileDrawer');
+        var drawerClose = document.getElementById('drawerClose');
+        var drawerBackdrop = document.getElementById('drawerBackdrop');
+
+        function openDrawer() {
+            mobileDrawer.classList.add('open');
+            drawerBackdrop.classList.add('visible');
+        }
+
+        function closeDrawer() {
+            mobileDrawer.classList.remove('open');
+            drawerBackdrop.classList.remove('visible');
+        }
+
+        if (menuToggle) { menuToggle.addEventListener('click', openDrawer); }
+        if (drawerClose) { drawerClose.addEventListener('click', closeDrawer); }
+        if (drawerBackdrop) { drawerBackdrop.addEventListener('click', closeDrawer); }
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') { closeDrawer(); }
+        });
+
+        // Handle tab navigation (includes drawer links)
+        document.querySelectorAll('.nav-tab, .drawer-link, #home-logo').forEach(function (tab) {
+            tab.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Remove active class from all sections
+                document.querySelectorAll('.page-section').forEach(function (section) {
+                    section.classList.remove('active');
+                });
+
+                // Add active class to target section
+                var targetId = this.getAttribute('href').substring(1);
+                var targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+
+                // Update URL without reloading
+                window.history.pushState(null, '', this.getAttribute('href'));
+
+                closeDrawer();
+                window.scrollTo(0, 0);
+            });
+        });
+
+        // Keep sections in sync with the URL (back/forward buttons, deep links)
+        function showFromHash() {
+            var hash = window.location.hash ? window.location.hash.substring(1) : 'main-page';
+            var target = document.getElementById(hash);
+            if (!target || !target.classList.contains('page-section')) { return; }
+
+            document.querySelectorAll('.page-section').forEach(function (section) {
                 section.classList.remove('active');
             });
-    
-            // Add active class to target section
-            const targetId = this.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
-            if (targetSection) {
-                targetSection.classList.add('active');
-            }
-    
-            // Update URL without reloading
-            window.history.pushState(null, '', this.getAttribute('href'));
+            target.classList.add('active');
+        }
+
+        window.addEventListener('hashchange', showFromHash);
+        window.addEventListener('popstate', showFromHash);
+
+        if (window.location.hash) { showFromHash(); }
+    })();
+</script>
+</body>
+</html>
