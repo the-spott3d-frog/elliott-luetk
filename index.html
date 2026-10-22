@@ -8,22 +8,33 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
     /* ============================================================
-       ELLIOTT ARTS — BRIDGE STYLE (Modern + Retro Balance)
-       Lightened colors, more white space, blended aesthetics
+       ELLIOTT ARTS — BRIDGE STYLE + BLUE ACCENTS
+       Forest green & gold base, navy/steel blue woven through
        ============================================================ */
 
     :root {
+        /* --- original forest family (kept) --- */
         --forest-dark: #2d4a2d;
         --forest-green: #4a7a4a;
         --moss: #7a9f7a;
         --earth-brown: #6b5242;
         --soft-tan: #dcc9b0;
         --mist-white: #ffffff;
-        --mist-grey: #f5f5f0;
+        --mist-grey: #f4f7fa;
         --accent-gold: #d4b97e;
+
+        /* --- new blue family --- */
+        --deep-blue: #22405c;
+        --navy: #16304a;
+        --steel-blue: #4a7196;
+        --slate-blue: #7ba0c4;
+        --powder-blue: #d3e2ef;
+        --sky-blue: #eaf2f8;
+
+        --ink: #2a3843;
+        --shadow-soft: rgba(34, 64, 92, 0.12);
+        --shadow-medium: rgba(34, 64, 92, 0.22);
         --nav-h: 68px;
-        --shadow-soft: rgba(0, 0, 0, 0.1);
-        --shadow-medium: rgba(0, 0, 0, 0.18);
     }
 
     * {
@@ -39,20 +50,20 @@
         background-color: var(--mist-grey);
         background-image:
             repeating-linear-gradient(0deg,
-                rgba(122, 159, 122, 0.03) 0px,
-                rgba(122, 159, 122, 0.03) 1px,
+                rgba(123, 160, 196, 0.045) 0px,
+                rgba(123, 160, 196, 0.045) 1px,
                 transparent 1px,
                 transparent 4px),
-            linear-gradient(135deg, var(--mist-grey) 0%, #e8ebe8 100%);
+            linear-gradient(135deg, var(--sky-blue) 0%, #e4ecf4 100%);
         background-attachment: fixed;
-        color: var(--forest-dark);
+        color: var(--ink);
         min-height: 100vh;
         display: flex;
         flex-direction: column;
     }
 
     ::selection {
-        background: var(--accent-gold);
+        background: var(--steel-blue);
         color: var(--mist-white);
     }
 
@@ -61,8 +72,9 @@
         height: var(--nav-h);
         padding: 0 20px;
         background: linear-gradient(to bottom,
-            var(--forest-green) 0%,
-            var(--forest-dark) 100%);
+            #35597a 0%,
+            var(--deep-blue) 58%,
+            var(--navy) 100%);
         position: sticky;
         top: 0;
         z-index: 100;
@@ -70,7 +82,7 @@
         justify-content: space-between;
         align-items: center;
         border-bottom: 2px solid var(--accent-gold);
-        box-shadow: 0 2px 8px var(--shadow-medium);
+        box-shadow: 0 2px 10px var(--shadow-medium);
     }
 
     .logo-btn {
@@ -81,15 +93,15 @@
         padding: 8px 18px;
         border: 2px solid var(--accent-gold);
         border-radius: 6px;
-        background: rgba(92, 122, 79, 0.7);
+        background: rgba(74, 113, 150, 0.65);
         transition: all 0.25s ease;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
     }
 
     .logo-btn:hover {
         background: var(--accent-gold);
-        color: var(--forest-dark);
-        box-shadow: 0 0 15px rgba(212, 185, 126, 0.35);
+        color: var(--navy);
+        box-shadow: 0 0 15px rgba(212, 185, 126, 0.4);
     }
 
     .nav-tabs {
@@ -101,8 +113,8 @@
     .nav-tab {
         display: block;
         background: linear-gradient(to bottom,
-            var(--moss) 0%,
-            var(--forest-green) 100%);
+            var(--steel-blue) 0%,
+            var(--deep-blue) 100%);
         color: var(--mist-white);
         text-decoration: none;
         padding: 8px 16px;
@@ -110,17 +122,18 @@
         font-weight: 600;
         font-size: 12px;
         letter-spacing: 1px;
-        border: 1px solid var(--forest-dark);
+        border: 1px solid var(--navy);
         transition: all 0.25s ease;
-        box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+        box-shadow: 0 2px 0 rgba(0, 0, 0, 0.18);
     }
 
     .nav-tab:hover,
     .nav-tab:focus {
-        background: var(--soft-tan);
-        color: var(--forest-dark);
+        background: var(--powder-blue);
+        color: var(--deep-blue);
+        border-color: var(--slate-blue);
         transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(122, 159, 122, 0.35);
+        box-shadow: 0 4px 10px rgba(123, 160, 196, 0.45);
     }
 
     /* ===== Main Layout ===== */
@@ -130,19 +143,20 @@
         gap: 0;
     }
 
-    /* ===== Sidebar ===== */
+    /* ===== Sidebar (keeps the forest green identity) ===== */
     .sidebar {
         width: 320px;
         background: linear-gradient(to right,
-            rgba(45, 74, 45, 0.85) 0%,
-            rgba(74, 122, 74, 0.7) 100%);
+            rgba(37, 61, 51, 0.92) 0%,
+            rgba(66, 108, 84, 0.82) 70%,
+            rgba(59, 96, 110, 0.78) 100%);
         padding: 24px 20px;
         height: calc(100vh - var(--nav-h));
         position: sticky;
         top: var(--nav-h);
         overflow-y: auto;
-        border-right: 1px solid var(--moss);
-        box-shadow: 2px 0 8px var(--shadow-soft);
+        border-right: 1px solid var(--slate-blue);
+        box-shadow: 2px 0 10px var(--shadow-soft);
     }
 
     .profile-section {
@@ -163,7 +177,7 @@
         align-items: center;
         justify-content: center;
         transition: all 0.25s ease;
-        box-shadow: 0 4px 12px var(--shadow-medium);
+        box-shadow: 0 4px 14px rgba(19, 33, 43, 0.35);
     }
 
     .profile-pic-placeholder img {
@@ -176,7 +190,8 @@
 
     .profile-pic-placeholder:hover {
         transform: scale(1.03);
-        box-shadow: 0 0 25px rgba(212, 185, 126, 0.3);
+        border-color: var(--powder-blue);
+        box-shadow: 0 0 25px rgba(168, 199, 227, 0.45);
     }
 
     .bio-text {
@@ -186,9 +201,9 @@
         color: var(--soft-tan);
         margin-bottom: 20px;
         padding: 14px;
-        border: 1px solid var(--moss);
+        border: 1px solid var(--slate-blue);
         border-radius: 6px;
-        background: rgba(255, 255, 255, 0.08);
+        background: rgba(207, 228, 246, 0.12);
     }
 
     .social-links {
@@ -196,7 +211,7 @@
         flex-direction: column;
         gap: 10px;
         padding-top: 16px;
-        border-top: 1px solid var(--moss);
+        border-top: 1px solid var(--slate-blue);
     }
 
     .social-link {
@@ -206,8 +221,8 @@
         padding: 10px 12px;
         border-radius: 5px;
         transition: all 0.25s ease;
-        border-left: 4px solid var(--moss);
-        background: rgba(74, 122, 74, 0.5);
+        border-left: 4px solid var(--steel-blue);
+        background: rgba(71, 112, 128, 0.5);
         font-size: 12px;
     }
 
@@ -217,8 +232,8 @@
     }
 
     .social-link:hover {
-        background: var(--soft-tan);
-        color: var(--forest-dark);
+        background: var(--powder-blue);
+        color: var(--deep-blue);
         border-left-color: var(--accent-gold);
         padding-left: 16px;
     }
@@ -228,8 +243,8 @@
         flex: 1;
         padding: 24px;
         background: linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.4) 0%,
-            rgba(245, 245, 240, 0.6) 100%);
+            rgba(232, 241, 249, 0.8) 0%,
+            rgba(252, 253, 254, 0.9) 100%);
     }
 
     .page-section {
@@ -251,19 +266,24 @@
         padding: 24px;
         border-radius: 8px;
         margin-bottom: 24px;
-        border: 1px solid var(--moss);
-        box-shadow: 0 2px 8px var(--shadow-soft);
+        border: 1px solid var(--slate-blue);
+        border-top: 3px solid var(--steel-blue);
+        box-shadow: 0 2px 10px var(--shadow-soft);
     }
 
     .content-block h2 {
         font-family: 'Cinzel', Georgia, serif;
         font-size: 16px;
-        color: var(--earth-brown);
+        color: var(--deep-blue);
         margin-bottom: 14px;
         padding-bottom: 8px;
         border-bottom: 2px solid var(--accent-gold);
         text-transform: uppercase;
         letter-spacing: 2px;
+    }
+
+    .content-block p {
+        color: #3a4854;
     }
 
     .image-grid {
@@ -278,13 +298,14 @@
         border-radius: 6px;
         overflow: hidden;
         transition: all 0.25s ease;
-        border: 1px solid var(--moss);
-        box-shadow: 0 2px 6px var(--shadow-soft);
+        border: 1px solid var(--slate-blue);
+        box-shadow: 0 2px 8px var(--shadow-soft);
     }
 
     .image-card:hover {
         transform: translateY(-4px);
-        box-shadow: 0 8px 20px rgba(122, 159, 122, 0.3);
+        border-color: var(--steel-blue);
+        box-shadow: 0 8px 22px rgba(74, 113, 150, 0.35);
     }
 
     .image-card img {
@@ -292,7 +313,7 @@
         height: 220px;
         object-fit: cover;
         display: block;
-        border-bottom: 2px solid var(--moss);
+        border-bottom: 2px solid var(--slate-blue);
     }
 
     .image-card p {
@@ -309,9 +330,9 @@
         text-align: center;
         margin: 36px 0;
         font-size: 24px;
-        color: var(--moss);
+        color: var(--steel-blue);
         letter-spacing: 16px;
-        opacity: 0.7;
+        opacity: 0.65;
     }
 
     /* Smooth scrollbar */
@@ -320,23 +341,23 @@
     }
 
     .sidebar::-webkit-scrollbar-track {
-        background: rgba(74, 122, 74, 0.2);
+        background: rgba(148, 181, 214, 0.22);
         border-radius: 5px;
     }
 
     .sidebar::-webkit-scrollbar-thumb {
-        background: var(--moss);
+        background: var(--steel-blue);
         border-radius: 5px;
-        border: 2px solid rgba(255, 255, 255, 0.2);
+        border: 2px solid rgba(235, 243, 251, 0.35);
     }
 
     /* ===== Mobile Drawer Menu ===== */
     .menu-toggle {
         display: none;
         background: linear-gradient(to bottom,
-            var(--moss) 0%,
-            var(--forest-green) 100%);
-        border: 2px solid var(--moss);
+            var(--steel-blue) 0%,
+            var(--deep-blue) 100%);
+        border: 2px solid var(--slate-blue);
         color: var(--mist-white);
         font-size: 18px;
         width: 44px;
@@ -345,13 +366,13 @@
         cursor: pointer;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 2px 4px var(--shadow-soft);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
     }
 
     .menu-toggle:hover {
-        background: var(--soft-tan);
-        color: var(--forest-dark);
-        border-color: var(--soft-tan);
+        background: var(--powder-blue);
+        color: var(--deep-blue);
+        border-color: var(--powder-blue);
     }
 
     .mobile-drawer {
@@ -362,15 +383,16 @@
         max-width: 85vw;
         height: 100vh;
         background: linear-gradient(to bottom,
-            var(--forest-green) 0%,
-            var(--forest-dark) 100%);
+            #2f5476 0%,
+            var(--deep-blue) 55%,
+            var(--navy) 100%);
         z-index: 200;
         transform: translateX(-100%);
         transition: transform 0.3s ease;
         display: flex;
         flex-direction: column;
         border-right: 2px solid var(--accent-gold);
-        box-shadow: 4px 0 20px var(--shadow-medium);
+        box-shadow: 4px 0 22px rgba(11, 26, 41, 0.45);
     }
 
     .mobile-drawer.open {
@@ -380,7 +402,7 @@
     .drawer-backdrop {
         position: fixed;
         inset: 0;
-        background: rgba(0, 0, 0, 0.45);
+        background: rgba(11, 26, 41, 0.5);
         z-index: 190;
         opacity: 0;
         pointer-events: none;
@@ -398,7 +420,7 @@
         gap: 12px;
         padding: 16px;
         border-bottom: 2px solid var(--accent-gold);
-        background: rgba(45, 74, 45, 0.85);
+        background: rgba(31, 57, 81, 0.85);
     }
 
     .drawer-pfp {
@@ -419,7 +441,7 @@
     .drawer-close {
         margin-left: auto;
         background: transparent;
-        border: 1px solid var(--moss);
+        border: 1px solid var(--slate-blue);
         color: var(--mist-white);
         font-size: 16px;
         cursor: pointer;
@@ -430,7 +452,8 @@
     }
 
     .drawer-close:hover {
-        background: var(--moss);
+        background: var(--steel-blue);
+        border-color: var(--powder-blue);
     }
 
     .drawer-nav {
@@ -445,8 +468,8 @@
         text-decoration: none;
         padding: 11px 14px;
         border-radius: 6px;
-        border-left: 4px solid var(--moss);
-        background: rgba(74, 122, 74, 0.5);
+        border-left: 4px solid var(--slate-blue);
+        background: rgba(69, 106, 143, 0.5);
         min-height: 44px;
         display: flex;
         align-items: center;
@@ -456,8 +479,8 @@
 
     .drawer-link:hover,
     .drawer-link:active {
-        background: var(--soft-tan);
-        color: var(--forest-dark);
+        background: var(--powder-blue);
+        color: var(--deep-blue);
         border-left-color: var(--accent-gold);
     }
 
@@ -483,7 +506,7 @@
             max-height: none;
             padding: 20px 16px;
             border-right: none;
-            border-bottom: 1px solid var(--moss);
+            border-bottom: 1px solid var(--slate-blue);
         }
 
         /* Hide profile in sidebar on mobile */
