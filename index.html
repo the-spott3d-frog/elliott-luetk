@@ -8,15 +8,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
     :root {
-        --deep-plum: #3d2847;
-        --burnt-orange: #c95d35;
-        --teal-blue: #1f6b6f;
-        --golden-yellow: #d4af37;
-        --magenta: #a3356e;
-        --cream: #f4ecd8;
-        --warm-gray: #7a6b5d;
-        --shadow-overlay: rgba(28, 20, 35, 0.2);
-        --accent-gold: #d4af37;
+        --clay: #8b6f5a;
+        --sage: #6b7a5c;
+        --slate: #4a5568;
+        --terracotta: #9c6644;
+        --mustard: #b89a4f;
+        --off-white: #ede6db;
+        --charcoal: #2d3436;
+        --shadow-overlay: rgba(0, 0, 0, 0.15);
+        --accent-gold: #b89a4f;
     }
     * {
         margin: 0;
@@ -26,8 +26,8 @@
 
     body {
         font-family: 'Cormorant Garamond', serif;
-        background: linear-gradient(135deg, var(--deep-plum) 0%, var(--teal-blue) 100%);
-        color: var(--cream);
+        background: linear-gradient(135deg, var(--slate) 0%, var(--sage) 100%);
+        color: var(--off-white);
         min-height: 100vh;
         display: flex;
         flex-direction: column;
@@ -35,7 +35,7 @@
 
     /* Top Navigation Bar */
     .top-nav {
-        background: rgba(61, 40, 71, 0.95);
+        background: rgba(74, 85, 104, 0.95);
         padding: 1rem 2rem;
         position: sticky;
         top: 0;
@@ -43,24 +43,27 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 2px solid var(--golden-yellow);
+        backdrop-filter: blur(5px);
+        box-shadow: 0 2px 15px var(--shadow-overlay);
+        border-bottom: 1px solid var(--sage);
     }
 
     .logo-btn {
         font-family: 'Playfair Display', serif;
         font-size: 1.5rem;
-        color: var(--cream);
+        color: var(--off-white);
         text-decoration: none;
         padding: 0.6rem 1.5rem;
         border: 2px solid var(--accent-gold);
-        border-radius: 25px;
+        border-radius: 4px;
         transition: all 0.3s ease;
-        background: rgba(201, 93, 53, 0.5);
+        background: rgba(156, 102, 68, 0.5);
     }
 
     .logo-btn:hover {
         background: var(--accent-gold);
-        color: var(--deep-plum);
+        color: var(--slate);
+        box-shadow: 0 0 20px rgba(184, 154, 79, 0.4);
     }
 
     .nav-tabs {
@@ -70,19 +73,20 @@
     }
 
     .nav-tab {
-        background: rgba(201, 93, 53, 0.6);
-        color: var(--cream);
+        background: rgba(107, 122, 92, 0.6);
+        color: var(--off-white);
         text-decoration: none;
         padding: 0.7rem 1.5rem;
-        border-radius: 8px;
+        border-radius: 4px;
         font-weight: 500;
         transition: all 0.3s ease;
-        border: 1px solid var(--teal-blue);
+        border: 1px solid var(--sage);
     }
 
     .nav-tab:hover {
-        background: var(--teal-blue);
+        background: var(--sage);
         transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(107, 122, 92, 0.4);
     }
 
     /* Main Layout */
@@ -95,13 +99,14 @@
     /* Sidebar */
     .sidebar {
         width: 320px;
-        background: rgba(61, 40, 71, 0.7);
+        background: rgba(74, 85, 104, 0.7);
         padding: 2rem;
         height: calc(100vh - 80px);
         position: sticky;
         top: 80px;
         overflow-y: auto;
-        border-right: 2px solid var(--golden-yellow);
+        border-right: 1px solid var(--sage);
+        backdrop-filter: blur(3px);
     }
 
     .profile-section {
@@ -114,7 +119,7 @@
         width: 180px;
         height: 180px;
         margin: 0 auto 1.5rem;
-        background: linear-gradient(135deg, var(--magenta) 0%, var(--teal-blue) 100%);
+        background: linear-gradient(135deg, var(--sage) 0%, var(--terracotta) 100%);
         border: 3px solid var(--accent-gold);
         border-radius: 50%;
         overflow: hidden;
@@ -134,12 +139,13 @@
 
     .profile-pic-placeholder:hover {
         transform: scale(1.05);
+        box-shadow: 0 0 30px rgba(184, 154, 79, 0.3);
     }
 
     .bio-text {
         font-size: 0.95rem;
         line-height: 1.8;
-        color: var(--warm-gray);
+        color: #d4c5aa;
         margin-bottom: 2rem;
     }
 
@@ -148,21 +154,21 @@
         flex-direction: column;
         gap: 1rem;
         padding-top: 1.5rem;
-        border-top: 2px solid var(--golden-yellow);
+        border-top: 1px solid var(--sage);
     }
 
     .social-link {
-        color: var(--cream);
+        color: var(--off-white);
         text-decoration: none;
         padding: 0.8rem;
-        border-radius: 5px;
+        border-radius: 4px;
         transition: all 0.3s ease;
-        border-left: 3px solid var(--teal-blue);
-        background: rgba(201, 93, 53, 0.3);
+        border-left: 3px solid var(--sage);
+        background: rgba(156, 102, 68, 0.3);
     }
 
     .social-link:hover {
-        background: var(--magenta);
+        background: var(--sage);
         border-left-color: var(--accent-gold);
         padding-left: 1.2rem;
     }
@@ -171,7 +177,7 @@
     .main-content {
         flex: 1;
         padding: 2rem;
-        background: linear-gradient(to bottom, rgba(61, 40, 71, 0.6), rgba(31, 107, 111, 0.4));
+        background: linear-gradient(to bottom, rgba(74, 85, 104, 0.6), rgba(107, 122, 92, 0.4));
     }
 
     .page-section {
@@ -189,18 +195,18 @@
     }
 
     .content-block {
-        background: rgba(244, 236, 216, 0.1);
+        background: rgba(139, 111, 90, 0.2);
         padding: 2rem;
         border-radius: 12px;
         margin-bottom: 2rem;
-        border: 2px solid var(--golden-yellow);
+        border: 1px solid var(--sage);
     }
 
     .content-block h2 {
         font-family: 'Playfair Display', serif;
-        color: var(--cream);
+        color: var(--off-white);
         margin-bottom: 1rem;
-        border-bottom: 2px solid var(--burnt-orange);
+        border-bottom: 2px solid var(--accent-gold);
         padding-bottom: 0.5rem;
     }
 
@@ -212,16 +218,16 @@
     }
 
     .image-card {
-        background: rgba(61, 40, 71, 0.5);
+        background: rgba(107, 122, 92, 0.5);
         border-radius: 8px;
         overflow: hidden;
         transition: all 0.3s ease;
-        border: 2px solid var(--teal-blue);
+        border: 1px solid var(--sage);
     }
 
     .image-card:hover {
         transform: translateY(-5px);
-        border-color: var(--accent-gold);
+        box-shadow: 0 8px 25px rgba(107, 122, 92, 0.4);
     }
 
     .image-card img {
@@ -233,7 +239,7 @@
 
     .image-card p {
         padding: 1rem;
-        color: var(--warm-gray);
+        color: #d4c5aa;
         font-size: 0.9rem;
     }
 
@@ -242,7 +248,7 @@
         text-align: center;
         margin: 3rem 0;
         font-size: 2rem;
-        color: var(--magenta);
+        color: var(--sage);
         letter-spacing: 1rem;
     }
 
@@ -252,25 +258,25 @@
     }
 
     .sidebar::-webkit-scrollbar-track {
-        background: rgba(201, 93, 53, 0.3);
+        background: rgba(107, 122, 92, 0.3);
         border-radius: 4px;
     }
 
     .sidebar::-webkit-scrollbar-thumb {
-        background: var(--magenta);
+        background: var(--sage);
         border-radius: 4px;
     }
 
     /* ===== Mobile Drawer Menu ===== */
     .menu-toggle {
         display: none;
-        background: rgba(201, 93, 53, 0.5);
-        border: 1px solid var(--teal-blue);
-        color: var(--cream);
+        background: rgba(156, 102, 68, 0.5);
+        border: 1px solid var(--sage);
+        color: var(--off-white);
         font-size: 1.5rem;
         width: 44px;
         height: 44px;
-        border-radius: 8px;
+        border-radius: 4px;
         cursor: pointer;
         align-items: center;
         justify-content: center;
@@ -283,13 +289,14 @@
         width: 280px;
         max-width: 85vw;
         height: 100vh;
-        background: rgba(61, 40, 71, 0.97);
+        background: rgba(74, 85, 104, 0.97);
         z-index: 200;
         transform: translateX(-100%);
         transition: transform 0.3s ease;
         display: flex;
         flex-direction: column;
-        border-right: 2px solid var(--golden-yellow);
+        border-right: 1px solid var(--sage);
+        box-shadow: 4px 0 25px rgba(0, 0, 0, 0.5);
     }
 
     .mobile-drawer.open {
@@ -316,7 +323,7 @@
         align-items: center;
         gap: 0.75rem;
         padding: 1rem;
-        border-bottom: 2px solid var(--golden-yellow);
+        border-bottom: 1px solid var(--sage);
     }
 
     .drawer-pfp {
@@ -329,7 +336,7 @@
 
     .drawer-name {
         font-family: 'Playfair Display', serif;
-        color: var(--cream);
+        color: var(--off-white);
         font-size: 1rem;
     }
 
@@ -337,16 +344,16 @@
         margin-left: auto;
         background: transparent;
         border: none;
-        color: var(--cream);
+        color: var(--off-white);
         font-size: 1.4rem;
         cursor: pointer;
         width: 40px;
         height: 40px;
-        border-radius: 5px;
+        border-radius: 4px;
     }
 
     .drawer-close:hover {
-        background: var(--magenta);
+        background: var(--sage);
     }
 
     .drawer-nav {
@@ -357,12 +364,12 @@
     }
 
     .drawer-link {
-        color: var(--cream);
+        color: var(--off-white);
         text-decoration: none;
         padding: 0.8rem 1rem;
-        border-radius: 8px;
-        border-left: 3px solid var(--teal-blue);
-        background: rgba(201, 93, 53, 0.4);
+        border-radius: 4px;
+        border-left: 3px solid var(--sage);
+        background: rgba(156, 102, 68, 0.4);
         min-height: 44px;
         display: flex;
         align-items: center;
@@ -370,7 +377,7 @@
 
     .drawer-link:hover,
     .drawer-link:active {
-        background: var(--magenta);
+        background: var(--sage);
         border-left-color: var(--accent-gold);
     }
 
